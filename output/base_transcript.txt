@@ -1,0 +1,264 @@
+[idx=0] [0.00s -> 2.36s] [audio=2.36s] [process=0.2507s] [rtf=0.1062]  This is our glass of this American life.
+[idx=1] [2.36s -> 3.68s] [audio=1.32s] [process=0.0000s] [rtf=0.0000]  Do you know our show?
+[idx=2] [3.68s -> 6.32s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  Okay, well, either way I'm gonna tell you about it.
+[idx=3] [6.32s -> 9.36s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  We make stories that hopefully pull you into the beginning
+[idx=4] [9.36s -> 10.96s] [audio=1.60s] [process=0.0000s] [rtf=0.0000]  with funny moments and feelings
+[idx=5] [10.96s -> 12.64s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  and people in surprising situations
+[idx=6] [12.64s -> 15.04s] [audio=2.40s] [process=0.0000s] [rtf=0.0000]  and then you just want to find out what is gonna happen
+[idx=7] [15.04s -> 16.96s] [audio=1.92s] [process=0.0000s] [rtf=0.0000]  and cannot stop listening.
+[idx=8] [16.96s -> 18.88s] [audio=1.92s] [process=0.0000s] [rtf=0.0000]  That's right, I'm talking about stories
+[idx=9] [18.88s -> 20.80s] [audio=1.92s] [process=0.0000s] [rtf=0.0000]  that make you miss appointments.
+[idx=10] [20.80s -> 23.84s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  This American life, wherever you get your podcasts.
+[idx=11] [23.84s -> 25.52s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  You're listening to LifeKit.
+[idx=12] [25.52s -> 27.52s] [audio=2.00s] [process=0.0000s] [rtf=0.0000]  From NPR.
+[idx=13] [30.88s -> 32.48s] [audio=1.60s] [process=0.2525s] [rtf=0.1578]  Hey, it's Maryl.
+[idx=14] [32.48s -> 34.80s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  I just got an alarm clock.
+[idx=15] [34.80s -> 36.32s] [audio=1.52s] [process=0.0000s] [rtf=0.0000]  It has a radio feature,
+[idx=16] [36.32s -> 39.36s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  so I wake up to the sounds of NPR every morning.
+[idx=17] [39.36s -> 42.08s] [audio=2.72s] [process=0.0000s] [rtf=0.0000]  Does it sound like I'm trying to suck up to my employer?
+[idx=18] [42.08s -> 43.12s] [audio=1.04s] [process=0.0000s] [rtf=0.0000]  I promise I'm not.
+[idx=19] [44.16s -> 46.32s] [audio=2.16s] [process=0.0000s] [rtf=0.0000]  Anyway, I did this because I was sick
+[idx=20] [46.32s -> 49.68s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  and tired of having my phone in my bedroom all night.
+[idx=21] [49.68s -> 51.44s] [audio=1.76s] [process=0.0000s] [rtf=0.0000]  Even when I blocked certain apps,
+[idx=22] [51.44s -> 53.52s] [audio=2.08s] [process=0.0000s] [rtf=0.0000]  I'd still find something to look at on there.
+[idx=23] [53.52s -> 55.76s] [audio=2.24s] [process=0.0000s] [rtf=0.0000]  Photos, old texts.
+[idx=24] [55.76s -> 57.92s] [audio=2.16s] [process=0.0000s] [rtf=0.0000]  It's about habit and it kept roping me in.
+[idx=25] [58.80s -> 61.52s] [audio=2.72s] [process=0.2302s] [rtf=0.0846]  This is, of course, a very common experience.
+[idx=26] [61.52s -> 64.64s] [audio=3.12s] [process=0.0000s] [rtf=0.0000]  Jose Boudillonis is the author of Low Tech Life,
+[idx=27] [64.64s -> 66.96s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  a guide to mindful digital minimalism.
+[idx=28] [67.68s -> 71.28s] [audio=3.60s] [process=0.0000s] [rtf=0.0000]  We all have this screen in front of us most of the time
+[idx=29] [71.28s -> 75.36s] [audio=4.08s] [process=0.0000s] [rtf=0.0000]  and then our offline life is relegated to a secondary place.
+[idx=30] [76.00s -> 78.24s] [audio=2.24s] [process=0.0000s] [rtf=0.0000]  But the reality is that as humans,
+[idx=31] [78.24s -> 81.76s] [audio=3.52s] [process=0.0000s] [rtf=0.0000]  we have lived in the offline default for so long
+[idx=32] [81.76s -> 83.28s] [audio=1.52s] [process=0.0000s] [rtf=0.0000]  that we crave it, we miss it.
+[idx=33] [84.32s -> 87.12s] [audio=2.80s] [process=0.0000s] [rtf=0.0000]  The alarm clock thing, by the way, is working really well for me
+[idx=34] [87.20s -> 88.80s] [audio=1.60s] [process=0.2339s] [rtf=0.1462]  and now I am craving more.
+[idx=35] [89.36s -> 91.60s] [audio=2.24s] [process=0.0000s] [rtf=0.0000]  More freedom from smartphone tyranny.
+[idx=36] [92.16s -> 94.32s] [audio=2.16s] [process=0.0000s] [rtf=0.0000]  Because, you know, I don't work for the smartphone.
+[idx=37] [94.32s -> 95.52s] [audio=1.20s] [process=0.0000s] [rtf=0.0000]  It's supposed to work for me.
+[idx=38] [96.80s -> 99.92s] [audio=3.12s] [process=0.0000s] [rtf=0.0000]  On this episode of LifeKit, we're going to give you five takeaways
+[idx=39] [99.92s -> 102.72s] [audio=2.80s] [process=0.0000s] [rtf=0.0000]  to help you get to a better place with your screen time.
+[idx=40] [102.72s -> 105.60s] [audio=2.88s] [process=0.0000s] [rtf=0.0000]  We'll talk about coping with that urge to scroll
+[idx=41] [105.60s -> 108.32s] [audio=2.72s] [process=0.0000s] [rtf=0.0000]  about how you might downgrade to a lower tech device
+[idx=42] [108.32s -> 110.56s] [audio=2.24s] [process=0.0000s] [rtf=0.0000]  or make yours less enticing and more.
+[idx=43] [114.08s -> 116.40s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  This is our glass of this American life.
+[idx=44] [116.48s -> 117.12s] [audio=0.64s] [process=0.2589s] [rtf=0.4045]  Do you know our show?
+[idx=45] [117.84s -> 119.84s] [audio=2.00s] [process=0.0000s] [rtf=0.0000]  Okay, well, either way, I'm going to tell you about it.
+[idx=46] [120.40s -> 123.36s] [audio=2.96s] [process=0.0000s] [rtf=0.0000]  We make stories that hopefully pull you into the beginning
+[idx=47] [123.36s -> 125.04s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  with funny moments and feelings
+[idx=48] [125.04s -> 126.72s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  and people in surprising situations
+[idx=49] [126.72s -> 129.12s] [audio=2.40s] [process=0.0000s] [rtf=0.0000]  and then you just want to find out what is going to happen
+[idx=50] [129.12s -> 130.40s] [audio=1.28s] [process=0.0000s] [rtf=0.0000]  and cannot stop listening.
+[idx=51] [131.04s -> 131.92s] [audio=0.88s] [process=0.0000s] [rtf=0.0000]  That's right.
+[idx=52] [131.92s -> 134.24s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  I'm talking about stories that make you miss appointments.
+[idx=53] [134.88s -> 137.52s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  This American life, wherever you get your podcasts.
+[idx=54] [138.96s -> 141.28s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  All right, y'all, it's time to talk about your feelings.
+[idx=55] [141.28s -> 144.16s] [audio=2.88s] [process=0.0000s] [rtf=0.0000]  The first step in listening your screen time
+[idx=56] [144.24s -> 146.24s] [audio=2.00s] [process=0.2452s] [rtf=0.1226]  is to tune into how it makes you feel.
+[idx=57] [147.04s -> 148.00s] [audio=0.96s] [process=0.0000s] [rtf=0.0000]  That's our takeaway one.
+[idx=58] [148.56s -> 150.00s] [audio=1.44s] [process=0.0000s] [rtf=0.0000]  When you want to reach for your phone
+[idx=59] [150.00s -> 153.52s] [audio=3.52s] [process=0.0000s] [rtf=0.0000]  or you think I should check Instagram for the 100th time today.
+[idx=60] [154.08s -> 156.48s] [audio=2.40s] [process=0.0000s] [rtf=0.0000]  Notice how you feel in that moment,
+[idx=61] [156.48s -> 157.68s] [audio=1.20s] [process=0.0000s] [rtf=0.0000]  how your body feels, too.
+[idx=62] [158.48s -> 161.12s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  Do the same thing during a scrolling session and after.
+[idx=63] [162.16s -> 164.72s] [audio=2.56s] [process=0.0000s] [rtf=0.0000]  Sammy Nichols is the author of Log Off,
+[idx=64] [164.72s -> 167.04s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  Self Help for the Extremely Online.
+[idx=65] [167.04s -> 169.52s] [audio=2.48s] [process=0.0000s] [rtf=0.0000]  In it she invites readers to track these feelings.
+[idx=66] [169.52s -> 172.88s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  I actually ask the reader to scroll through social media
+[idx=67] [172.88s -> 175.92s] [audio=3.04s] [process=0.2335s] [rtf=0.0768]  as they normally would and notice what feelings come up,
+[idx=68] [175.92s -> 179.12s] [audio=3.20s] [process=0.0000s] [rtf=0.0000]  like what prompts them to get on social media.
+[idx=69] [179.12s -> 183.52s] [audio=4.40s] [process=0.0000s] [rtf=0.0000]  Like, for example, I noticed that whenever I was feeling bad about myself
+[idx=70] [184.16s -> 187.20s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  in some way, I would log on Twitter.
+[idx=71] [187.20s -> 190.08s] [audio=2.88s] [process=0.0000s] [rtf=0.0000]  And when you're prompted to really think about it,
+[idx=72] [190.08s -> 191.76s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  be mindful about how you're feeling.
+[idx=73] [192.32s -> 194.64s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  That's where the goal is really,
+[idx=74] [194.64s -> 197.52s] [audio=2.88s] [process=0.0000s] [rtf=0.0000]  because the only thing that you need to do,
+[idx=75] [197.52s -> 201.60s] [audio=4.08s] [process=0.0000s] [rtf=0.0000]  the only thing is to pay attention to how you're feeling on social media
+[idx=76] [201.60s -> 203.36s] [audio=1.76s] [process=0.2786s] [rtf=0.1583]  and when you feel bad, log off.
+[idx=77] [203.36s -> 205.84s] [audio=2.48s] [process=0.0000s] [rtf=0.0000]  Ask yourself, how do I feel right now?
+[idx=78] [205.84s -> 207.12s] [audio=1.28s] [process=0.0000s] [rtf=0.0000]  And what can I do?
+[idx=79] [207.36s -> 210.48s] [audio=3.12s] [process=0.0000s] [rtf=0.0000]  And most times it's not scroll.
+[idx=80] [210.48s -> 212.80s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  Most times it's like, take a nap.
+[idx=81] [212.80s -> 214.08s] [audio=1.28s] [process=0.0000s] [rtf=0.0000]  We're talk to a friend.
+[idx=82] [214.08s -> 215.52s] [audio=1.44s] [process=0.0000s] [rtf=0.0000]  We're do something that makes you happy.
+[idx=83] [216.64s -> 219.92s] [audio=3.28s] [process=0.0000s] [rtf=0.0000]  Another thing you can do when you get the urge to scroll is resist.
+[idx=84] [220.56s -> 223.20s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  I know it feels like you have to pick up that phone,
+[idx=85] [223.20s -> 224.56s] [audio=1.36s] [process=0.0000s] [rtf=0.0000]  but you really don't.
+[idx=86] [224.56s -> 227.92s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  Clinical psychologist Diana Hill has written about this topic.
+[idx=87] [227.92s -> 230.56s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  And she says there's this term in addiction research
+[idx=88] [230.56s -> 232.08s] [audio=1.52s] [process=0.2381s] [rtf=0.1566]  called urge surfing.
+[idx=89] [232.08s -> 235.44s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  There was a really famous addiction researcher named Alan Marlott
+[idx=90] [235.44s -> 237.68s] [audio=2.24s] [process=0.0000s] [rtf=0.0000]  and he used it with smoking.
+[idx=91] [237.68s -> 241.04s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  So if you can imagine an urge to smoke,
+[idx=92] [241.04s -> 244.48s] [audio=3.44s] [process=0.0000s] [rtf=0.0000]  it rises and rises and rises and it increases so much to the point
+[idx=93] [244.48s -> 245.84s] [audio=1.36s] [process=0.0000s] [rtf=0.0000]  when you end up giving in on it.
+[idx=94] [246.56s -> 249.92s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  And we can think about the same thing with our technology use.
+[idx=95] [249.92s -> 251.76s] [audio=1.84s] [process=0.0000s] [rtf=0.0000]  You have that urge to pick up your phone
+[idx=96] [251.76s -> 253.20s] [audio=1.44s] [process=0.0000s] [rtf=0.0000]  or maybe first thing in the morning,
+[idx=97] [253.20s -> 257.20s] [audio=4.00s] [process=0.0000s] [rtf=0.0000]  you have an urge to go right on your Instagram or the newsfeed.
+[idx=98] [257.84s -> 261.04s] [audio=3.20s] [process=0.2531s] [rtf=0.0791]  But what we know about urges is that there are a lot like waves.
+[idx=99] [261.76s -> 265.12s] [audio=3.36s] [process=0.0000s] [rtf=0.0000]  They rise up, they get bigger and bigger and bigger
+[idx=100] [265.12s -> 266.88s] [audio=1.76s] [process=0.0000s] [rtf=0.0000]  and they come back down again.
+[idx=101] [266.88s -> 270.88s] [audio=4.00s] [process=0.0000s] [rtf=0.0000]  She says the goal with urge surfing is to learn to get on board,
+[idx=102] [270.88s -> 273.04s] [audio=2.16s] [process=0.0001s] [rtf=0.0000]  stand up and ride that thing out.
+[idx=103] [273.04s -> 276.80s] [audio=3.76s] [process=0.0000s] [rtf=0.0000]  And the more that you do it, the better you get it surfing it.
+[idx=104] [276.80s -> 281.04s] [audio=4.24s] [process=0.0000s] [rtf=0.0000]  And the less that you feel the feeling of I have to give into the urge
+[idx=105] [281.04s -> 281.84s] [audio=0.80s] [process=0.0000s] [rtf=0.0000]  or it will kill me.
+[idx=106] [283.44s -> 285.20s] [audio=1.76s] [process=0.0000s] [rtf=0.0000]  Okay, next up, take away two.
+[idx=107] [285.84s -> 289.12s] [audio=3.28s] [process=0.2840s] [rtf=0.0866]  Increase the friction, make it harder to use your phone.
+[idx=108] [290.00s -> 292.64s] [audio=2.64s] [process=0.0000s] [rtf=0.0000]  BJ Fogg is a behavioral scientist at Stanford
+[idx=109] [292.64s -> 294.48s] [audio=1.84s] [process=0.0000s] [rtf=0.0000]  who studies habit formation.
+[idx=110] [294.48s -> 296.16s] [audio=1.68s] [process=0.0000s] [rtf=0.0000]  And here's one thing he's learned.
+[idx=111] [296.16s -> 299.68s] [audio=3.52s] [process=0.0000s] [rtf=0.0000]  If you can get rid of ability or make it super hard to do or impossible,
+[idx=112] [299.68s -> 300.80s] [audio=1.12s] [process=0.0000s] [rtf=0.0000]  then the habit stops.
+[idx=113] [300.80s -> 302.72s] [audio=1.92s] [process=0.0000s] [rtf=0.0000]  If you can remove the prompt, it stops.
+[idx=114] [302.72s -> 304.72s] [audio=2.00s] [process=0.0000s] [rtf=0.0000]  There are a lot of different ways to do this.
+[idx=115] [304.72s -> 308.88s] [audio=4.16s] [process=0.0000s] [rtf=0.0000]  In my own life, one thing I do is I turn off tons of notifications.
+[idx=116] [309.44s -> 311.76s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  So I turn off the digital prompts.
+[idx=117] [311.76s -> 314.56s] [audio=2.80s] [process=0.0000s] [rtf=0.0000]  You might know people who've turned their phone screens black and white
+[idx=118] [314.56s -> 316.96s] [audio=2.40s] [process=0.2575s] [rtf=0.1073]  to make the content less visually enticing.
+[idx=119] [316.96s -> 321.52s] [audio=4.56s] [process=0.0000s] [rtf=0.0000]  You can also set up a simple home screen that just has a list of apps and no pictures.
+[idx=120] [321.52s -> 324.32s] [audio=2.80s] [process=0.0000s] [rtf=0.0000]  I've done the thing where I don't keep Instagram on my phone
+[idx=121] [324.32s -> 328.40s] [audio=4.08s] [process=0.0000s] [rtf=0.0000]  and I only log in on a browser because it's not a great experience.
+[idx=122] [328.40s -> 330.00s] [audio=1.60s] [process=0.0000s] [rtf=0.0000]  So I'm less likely to hang around.
+[idx=123] [330.96s -> 334.24s] [audio=3.28s] [process=0.0000s] [rtf=0.0000]  Other folks trade in their smartphones for something more basic.
+[idx=124] [334.24s -> 337.20s] [audio=2.96s] [process=0.0000s] [rtf=0.0000]  A simple phone, also known as a dumb phone.
+[idx=125] [337.20s -> 339.60s] [audio=2.40s] [process=0.0000s] [rtf=0.0000]  There are some simple phones that have a browser,
+[idx=126] [339.60s -> 341.44s] [audio=1.84s] [process=0.0000s] [rtf=0.0000]  but it's not that usable.
+[idx=127] [341.44s -> 342.72s] [audio=1.28s] [process=0.0000s] [rtf=0.0000]  It's very basic.
+[idx=128] [342.72s -> 344.08s] [audio=1.36s] [process=0.2153s] [rtf=0.1583]  Essentially a Google search.
+[idx=129] [344.08s -> 345.68s] [audio=1.60s] [process=0.0000s] [rtf=0.0000]  Something super simple.
+[idx=130] [345.68s -> 351.04s] [audio=5.36s] [process=0.0000s] [rtf=0.0000]  There are other devices which do have more smartphone-like features,
+[idx=131] [351.04s -> 352.96s] [audio=1.92s] [process=0.0000s] [rtf=0.0000]  but because they have a small screen,
+[idx=132] [353.60s -> 357.12s] [audio=3.52s] [process=0.0000s] [rtf=0.0000]  you probably will not be tempted to spend as much time in them.
+[idx=133] [358.16s -> 363.44s] [audio=5.28s] [process=0.0000s] [rtf=0.0000]  After college, Jose realized he was spending 12 to 13 hours a day online,
+[idx=134] [363.44s -> 364.96s] [audio=1.52s] [process=0.0000s] [rtf=0.0000]  particularly on his phone.
+[idx=135] [364.96s -> 366.32s] [audio=1.36s] [process=0.0000s] [rtf=0.0000]  And it was taking a toll.
+[idx=136] [366.32s -> 367.28s] [audio=0.96s] [process=0.0000s] [rtf=0.0000]  I felt stressed.
+[idx=137] [367.28s -> 369.84s] [audio=2.56s] [process=0.0000s] [rtf=0.0000]  I felt anxious in a way that I hadn't.
+[idx=138] [369.84s -> 375.04s] [audio=5.20s] [process=0.2009s] [rtf=0.0386]  I started to notice differences in the way that I acted with my friends, with my family.
+[idx=139] [375.04s -> 377.36s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  Maybe I was a little bit shorter, angrier.
+[idx=140] [377.92s -> 383.68s] [audio=5.76s] [process=0.0000s] [rtf=0.0000]  So what I have done since I switched to a more basic phone is I go for walks.
+[idx=141] [383.68s -> 388.64s] [audio=4.96s] [process=0.0000s] [rtf=0.0000]  Every two to three hours, I have a dog that is quite active and he helps me in this.
+[idx=142] [388.64s -> 396.00s] [audio=7.36s] [process=0.0000s] [rtf=0.0000]  So I go on a walk with my dog in the neighborhood and I just take that time to recompose.
+[idx=143] [396.00s -> 400.96s] [audio=4.96s] [process=0.2184s] [rtf=0.0440]  Think about what's just happening in my life and processing all of the different aspects of it.
+[idx=144] [402.16s -> 406.88s] [audio=4.72s] [process=0.0000s] [rtf=0.0000]  If you want to get a simple phone, Jose has a free quiz on his website to help you find one
+[idx=145] [406.88s -> 411.20s] [audio=4.32s] [process=0.0000s] [rtf=0.0000]  that works for you. But even if you plan to keep using your smartphone,
+[idx=146] [411.20s -> 414.64s] [audio=3.44s] [process=0.0000s] [rtf=0.0000]  here are some more tips for turning up that friction dial.
+[idx=147] [414.64s -> 419.76s] [audio=5.12s] [process=0.0000s] [rtf=0.0000]  The first one is to trust somebody else with your screen time passcode.
+[idx=148] [419.76s -> 424.56s] [audio=4.80s] [process=0.0000s] [rtf=0.0000]  So if you want to go into your iPhone and you want to use the app,
+[idx=149] [424.56s -> 429.60s] [audio=5.04s] [process=0.2462s] [rtf=0.0488]  and you set up a screen time limit, maybe it's 10 minutes, maybe it's 15, and you went to it.
+[idx=150] [429.60s -> 434.24s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  Right now you probably can beat that with two taps. You say, yes, I want more time.
+[idx=151] [434.80s -> 436.96s] [audio=2.16s] [process=0.0000s] [rtf=0.0000]  Are you sure? Yes, I'm sure.
+[idx=152] [436.96s -> 440.00s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  So if you give your screen time passcode to somebody else,
+[idx=153] [440.00s -> 444.32s] [audio=4.32s] [process=0.0000s] [rtf=0.0000]  I love one, a friend, somebody that you trust, and they don't give it back to you,
+[idx=154] [444.32s -> 447.60s] [audio=3.28s] [process=0.0000s] [rtf=0.0000]  then you will have closed that loop for yourself.
+[idx=155] [447.60s -> 452.24s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  The second option is to get a software blocker or maybe a hardware blocker.
+[idx=156] [452.32s -> 456.96s] [audio=4.64s] [process=0.2099s] [rtf=0.0452]  So there are some companies like ClearSpace or OneSec.
+[idx=157] [456.96s -> 461.20s] [audio=4.24s] [process=0.0000s] [rtf=0.0000]  They introduce delays and some reminders to not use your phone.
+[idx=158] [461.20s -> 464.64s] [audio=3.44s] [process=0.0000s] [rtf=0.0000]  And there's also a puck that I'm holding right now. It's called brick.
+[idx=159] [465.20s -> 469.44s] [audio=4.24s] [process=0.0000s] [rtf=0.0000]  When you tap it, you block all of your apps. When you tap it again,
+[idx=160] [469.44s -> 472.56s] [audio=3.12s] [process=0.0000s] [rtf=0.0000]  you allow yourself to use all of those apps again.
+[idx=161] [472.56s -> 477.68s] [audio=5.12s] [process=0.0000s] [rtf=0.0000]  The more friction you're introducing to your life, the harder you're making it to use all of
+[idx=162] [477.68s -> 481.52s] [audio=3.84s] [process=0.2398s] [rtf=0.0625]  these services and devices. Your brain is going to say it's not worth it.
+[idx=163] [483.20s -> 488.08s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  Okay, you're becoming more mindful of your smartphone use and you've put some obstacles in place.
+[idx=164] [488.08s -> 490.88s] [audio=2.80s] [process=0.0000s] [rtf=0.0000]  You can follow only one of the rules that should be this one.
+[idx=165] [491.36s -> 497.12s] [audio=5.76s] [process=0.0000s] [rtf=0.0000]  Take away three. Don't keep your smartphone, tablet, or computer in your bedroom overnight.
+[idx=166] [497.12s -> 499.12s] [audio=2.00s] [process=0.0000s] [rtf=0.0000]  And that's for people all ages.
+[idx=167] [499.12s -> 504.64s] [audio=5.52s] [process=0.0000s] [rtf=0.0000]  Gene Twangie is a psychologist and author of 10 rules for raising kids in a high-tech world.
+[idx=168] [504.64s -> 508.64s] [audio=4.00s] [process=0.2427s] [rtf=0.0607]  So a ton of research shows that people do not sleep as well or as long
+[idx=169] [509.44s -> 512.56s] [audio=3.12s] [process=0.0000s] [rtf=0.0000]  if those devices are in their bedrooms overnight.
+[idx=170] [513.04s -> 517.12s] [audio=4.08s] [process=0.0000s] [rtf=0.0000]  So even if it's off, the technology is just too tempting.
+[idx=171] [518.16s -> 522.88s] [audio=4.72s] [process=0.0000s] [rtf=0.0000]  She says that means no scrolling before bed and no scrolling when you wake up in the morning
+[idx=172] [522.88s -> 525.92s] [audio=3.04s] [process=0.0000s] [rtf=0.0000]  and also no scrolling if you happen to wake up in the middle of the night.
+[idx=173] [525.92s -> 530.56s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  She suggests you get yourself a regular old-school alarm clock like I did
+[idx=174] [530.56s -> 532.88s] [audio=2.32s] [process=0.0000s] [rtf=0.0000]  and let your phone get some shut-eye in another room.
+[idx=175] [533.04s -> 537.20s] [audio=4.16s] [process=0.2398s] [rtf=0.0576]  Now Sammy Nichol says doing this has changed her life.
+[idx=176] [538.08s -> 543.52s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  Have you ever been to a hotel like this kind of nice and you get into the sheets and it just
+[idx=177] [543.52s -> 548.40s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  feels so nice to kind of like have this time to yourself and just feel very calm and it's like
+[idx=178] [548.40s -> 554.72s] [audio=6.32s] [process=0.0000s] [rtf=0.0000]  a very specific in my mind, a hotel feeling. And that's what I felt when I when I put my phone
+[idx=179] [554.72s -> 559.52s] [audio=4.80s] [process=0.0000s] [rtf=0.0000]  outside of my room and just like kind of let myself like relax and like maybe take a bath or like
+[idx=180] [560.48s -> 566.88s] [audio=6.40s] [process=0.2292s] [rtf=0.0358]  read for a while and just away from any screens. It's like I got that presence of mind back and I
+[idx=181] [566.88s -> 573.60s] [audio=6.72s] [process=0.0000s] [rtf=0.0000]  realized having the phone outside of your bedroom makes that time around your bedtime feel just like
+[idx=182] [574.24s -> 577.68s] [audio=3.44s] [process=0.0000s] [rtf=0.0000]  like a sanctuary and also it really does improve your sleep.
+[idx=183] [577.68s -> 583.20s] [audio=5.52s] [process=0.0000s] [rtf=0.0000]  Now I can hear you what if there's an emergency and somebody needs to call me at 2 a.m.
+[idx=184] [583.84s -> 588.24s] [audio=4.40s] [process=0.0000s] [rtf=0.0000]  I hope that never happens to you but you know you could leave your phone across the room but not
+[idx=185] [588.24s -> 592.48s] [audio=4.24s] [process=0.2183s] [rtf=0.0515]  reachable from your bed or you could turn the ringer all the way up and put the phone outside
+[idx=186] [592.48s -> 597.04s] [audio=4.56s] [process=0.0000s] [rtf=0.0000]  your bedroom door. We'll have more life kit after the break.
+[idx=187] [602.08s -> 607.04s] [audio=4.96s] [process=0.0000s] [rtf=0.0000]  This is our glass of this American life. Do you know our show? Okay, we'll be the way I'm
+[idx=188] [607.04s -> 611.60s] [audio=4.56s] [process=0.0000s] [rtf=0.0000]  going to tell you about it. We make stories that hopefully pull you into the beginning with
+[idx=189] [611.60s -> 615.92s] [audio=4.32s] [process=0.0000s] [rtf=0.0000]  funny moments and feelings and people in surprising situations and then you just want to find out
+[idx=190] [615.92s -> 620.96s] [audio=5.04s] [process=0.2288s] [rtf=0.0454]  what is going to happen and cannot stop listening. That's right. I'm talking about stories that
+[idx=191] [620.96s -> 625.44s] [audio=4.48s] [process=0.0000s] [rtf=0.0000]  make you miss appointments. This American life wherever you get your podcasts.
+[idx=192] [626.88s -> 632.08s] [audio=5.20s] [process=0.0000s] [rtf=0.0000]  Whenever I take a couple days away from Instagram and then I log back in, I feel guilty because I have
+[idx=193] [632.08s -> 638.80s] [audio=6.72s] [process=0.0000s] [rtf=0.0000]  all these unread messages from my loved ones. Memes handpicked by them for me. I am ungrateful.
+[idx=194] [638.80s -> 644.64s] [audio=5.84s] [process=0.0000s] [rtf=0.0000]  I am a bad friend. Seriously though when you change your online behavior and become less available
+[idx=195] [644.64s -> 650.16s] [audio=5.52s] [process=0.2367s] [rtf=0.0429]  you might get some pushback or feel less connected. Take away four is to prepare for that and
+[idx=196] [650.16s -> 655.84s] [audio=5.68s] [process=0.0000s] [rtf=0.0000]  communicate clearly with the people you love. You have to create that boundary with yourself,
+[idx=197] [655.84s -> 661.28s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  with your employer, with your family and you also have to advocate for yourself. You need to say
+[idx=198] [661.28s -> 667.68s] [audio=6.40s] [process=0.0000s] [rtf=0.0000]  this is something that I'm doing for me for my health and I'm going to try to do this so I can change
+[idx=199] [667.68s -> 672.48s] [audio=4.80s] [process=0.0000s] [rtf=0.0000]  my lifestyle for the better. I can actually focus on my tasks instead of being distracted every other
+[idx=200] [672.48s -> 678.16s] [audio=5.68s] [process=0.1843s] [rtf=0.0324]  minute because I'm having a conversation in the seventh group chat. You might be ready to ditch
+[idx=201] [678.16s -> 683.20s] [audio=5.04s] [process=0.0000s] [rtf=0.0000]  Facebook or Instagram or dip out of some group chats but worry that your friendships will suffer
+[idx=202] [683.20s -> 690.00s] [audio=6.80s] [process=0.0000s] [rtf=0.0000]  the consequences. Sammy has some advice for you. I think that a big resistance to social media
+[idx=203] [690.00s -> 697.20s] [audio=7.20s] [process=0.0000s] [rtf=0.0000]  and getting off social media is that you'll lose friends and I would say that social media
+[idx=204] [697.20s -> 703.44s] [audio=6.24s] [process=0.2129s] [rtf=0.0341]  makes us think that we're supposed to have countless close friends but relationships take time
+[idx=205] [703.44s -> 709.92s] [audio=6.48s] [process=0.0000s] [rtf=0.0000]  and the really great thing about rolling back your social media use is that it kind of helps you
+[idx=206] [709.92s -> 715.52s] [audio=5.60s] [process=0.0000s] [rtf=0.0000]  see which relationships were kind of a bit shallow which you know there's nothing wrong with that
+[idx=207] [715.52s -> 720.16s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  at all because that's human nature like we have acquaintances and we have people who we know through
+[idx=208] [720.16s -> 726.96s] [audio=6.80s] [process=0.0000s] [rtf=0.0000]  certain contexts but if the relationship is meant to stay it will and it's kind of rewarding in that
+[idx=209] [726.96s -> 733.36s] [audio=6.40s] [process=0.1781s] [rtf=0.0278]  way to realize which friendships and which relationships are in it for the long haul. And if you
+[idx=210] [733.36s -> 738.24s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  start talking to people in person about your efforts to spend less time on your phone you might
+[idx=211] [738.24s -> 743.68s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  realize that they are trying to do the same thing. There's strength in numbers. When you're more
+[idx=212] [743.68s -> 749.92s] [audio=6.24s] [process=0.0000s] [rtf=0.0000]  present around other people and not like checking your phone constantly they end up being more present
+[idx=213] [750.64s -> 758.64s] [audio=8.00s] [process=0.1867s] [rtf=0.0233]  to it feels really good to be present with somebody and when you are making changes in your life
+[idx=214] [758.64s -> 764.88s] [audio=6.24s] [process=0.0000s] [rtf=0.0000]  and other people see how much happier you are then it does end up spreading to other people.
+[idx=215] [764.88s -> 772.24s] [audio=7.36s] [process=0.0000s] [rtf=0.0000]  That brings me to take away five. Think about all the time you used to spend on your phone as a gift to yourself.
+[idx=216] [772.24s -> 775.84s] [audio=3.60s] [process=0.0000s] [rtf=0.0000]  Now you have so much more time to put towards the things that matter to you.
+[idx=217] [776.16s -> 780.88s] [audio=4.72s] [process=0.2101s] [rtf=0.0445]  When you get to the end of your life the sum total of all the things you paid attention to
+[idx=218] [780.88s -> 786.56s] [audio=5.68s] [process=0.0000s] [rtf=0.0000]  will have been your life. If there are some friendships there that you never actually paid any
+[idx=219] [786.56s -> 790.64s] [audio=4.08s] [process=0.0000s] [rtf=0.0000]  attention to well you didn't really have those friendships right I mean if there was an interest
+[idx=220] [790.64s -> 795.36s] [audio=4.72s] [process=0.0000s] [rtf=0.0000]  that you had that you never actually spent any attention pursuing well you didn't really have
+[idx=221] [795.36s -> 800.72s] [audio=5.36s] [process=0.0000s] [rtf=0.0000]  that interest so it really matters what we're paying attention to because it just adds up to
+[idx=222] [801.68s -> 805.92s] [audio=4.24s] [process=0.2371s] [rtf=0.0559]  a life. Oliver Berkman is the author of 4,000 weeks time management for mortals.
+[idx=223] [805.92s -> 810.80s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  It's about how to manage the limited time we have on earth which if you live to 80 comes out to
+[idx=224] [810.80s -> 816.64s] [audio=5.84s] [process=0.0000s] [rtf=0.0000]  about 4,000 weeks and even if you're incredibly lucky in terms of your lifespan it's still going to be
+[idx=225] [816.64s -> 822.00s] [audio=5.36s] [process=0.0000s] [rtf=0.0000]  a very hard limit and this has lots of ramifications for how we think about using our daily time
+[idx=226] [822.00s -> 826.80s] [audio=4.80s] [process=0.0000s] [rtf=0.0000]  that I think we don't pay enough attention to. If you're paying attention to things that on some
+[idx=227] [826.80s -> 834.48s] [audio=7.68s] [process=0.1806s] [rtf=0.0235]  level you don't want to be paying attention to you're just giving away the only precious thing you have.
+[idx=228] [835.76s -> 840.88s] [audio=5.12s] [process=0.0000s] [rtf=0.0000]  Since I switched to simpler phones I've been able to recover a lot of those habits that I used to
+[idx=229] [840.88s -> 850.24s] [audio=9.36s] [process=0.0000s] [rtf=0.0000]  have in university reading books better sleep exercising walking just going out and thinking
+[idx=230] [850.24s -> 855.76s] [audio=5.52s] [process=0.0000s] [rtf=0.0000]  about my day and having better relationships and I was able to at the same time start a hobby
+[idx=231] [855.76s -> 861.52s] [audio=5.76s] [process=0.2171s] [rtf=0.0377]  to help people find what's the best path for them so I guess I gain a lot of skills and a lot of
+[idx=232] [861.52s -> 868.48s] [audio=6.96s] [process=0.0000s] [rtf=0.0000]  different things during this time period that have made my life more satisfying. Why not use your
+[idx=233] [868.48s -> 874.48s] [audio=6.00s] [process=0.0000s] [rtf=0.0000]  newly available time to move your body to make some art to gather with friends host a gathering
+[idx=234] [874.48s -> 878.72s] [audio=4.24s] [process=0.0000s] [rtf=0.0000]  that excites you. Here's what Priya Parker author of the art of gathering told me.
+[idx=235] [879.28s -> 884.16s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  The best way to get a seat at the table is to host the table and I think right now
+[idx=236] [884.96s -> 891.04s] [audio=6.08s] [process=0.2429s] [rtf=0.0400]  everybody's longing for community we long to be part of a village we long to have people come
+[idx=237] [891.04s -> 897.20s] [audio=6.16s] [process=0.0000s] [rtf=0.0000]  over and help us but when's the last time you've hosted something. And Sammy says that yeah
+[idx=238] [897.20s -> 902.64s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  breaking your phone's hold on you is hard but on the other side you kind of get this period of like
+[idx=239] [903.28s -> 907.92s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  almost reclaiming your life and I don't mean to sound dramatic but that's really how it felt.
+[idx=240] [907.92s -> 912.80s] [audio=4.88s] [process=0.0000s] [rtf=0.0000]  Where I was like oh my god I can do anything I want with my time like and I forgot I forgot that I'm
+[idx=241] [912.80s -> 921.04s] [audio=8.24s] [process=0.1899s] [rtf=0.0230]  an adult who can do whatever I want you know. Okay time for a recap. Take away one when you want
+[idx=242] [921.04s -> 926.00s] [audio=4.96s] [process=0.0000s] [rtf=0.0000]  to reach for your phone or you think I should check Instagram for the hundredth time today notice
+[idx=243] [926.00s -> 931.44s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  how you feel in that moment and how your body feels do the same thing during a scrolling session
+[idx=244] [931.44s -> 938.56s] [audio=7.12s] [process=0.0000s] [rtf=0.0000]  and after and try resisting the urge to scroll maybe move your body instead. Take away two
+[idx=245] [938.64s -> 943.20s] [audio=4.56s] [process=0.2133s] [rtf=0.0468]  increase the friction make it harder to use your phone make the phone less enticing.
+[idx=246] [944.08s -> 948.88s] [audio=4.80s] [process=0.0000s] [rtf=0.0000]  Take away three don't keep your smartphone tablet or computer in your bedroom overnight
+[idx=247] [950.24s -> 955.76s] [audio=5.52s] [process=0.0000s] [rtf=0.0000]  and if you do keep it out of reach across the room or just outside the door with the ring or turn
+[idx=248] [955.76s -> 962.40s] [audio=6.64s] [process=0.0000s] [rtf=0.0000]  to all the way up in case of an emergency call. Take away four when you change your online behavior
+[idx=249] [962.40s -> 967.44s] [audio=5.04s] [process=0.0000s] [rtf=0.0000]  and become less available you might get some pushback you want to prepare for that and communicate
+[idx=250] [967.44s -> 972.96s] [audio=5.52s] [process=0.2005s] [rtf=0.0363]  clearly with the people you love. And take away five. Take all that time you used to spend on your
+[idx=251] [972.96s -> 979.76s] [audio=6.80s] [process=0.0000s] [rtf=0.0000]  phone and put it towards the things that matter to you. That's our show. For more life kit check out our
+[idx=252] [979.76s -> 985.60s] [audio=5.84s] [process=0.0000s] [rtf=0.0000]  other episodes. We have one with Diana Hill and Katie Bowman a biomechanist they co-wrote that book
+[idx=253] [985.60s -> 991.44s] [audio=5.84s] [process=0.0000s] [rtf=0.0000]  together about how to crave movement instead of your smartphone. Also we love hearing from you so
+[idx=254] [991.44s -> 996.56s] [audio=5.12s] [process=0.2367s] [rtf=0.0462]  if you have episode ideas or feedback you want to share email us at lifekit at npr.org.
+[idx=255] [998.08s -> 1003.44s] [audio=5.36s] [process=0.0000s] [rtf=0.0000]  This episode of life kit was produced by Sylvie Douglas and Mika Ellison our digital editor is
+[idx=256] [1003.44s -> 1009.04s] [audio=5.60s] [process=0.0000s] [rtf=0.0000]  Monica Grebe. Megan Cain is our senior supervising editor and Beth Johnovan is our executive producer.
+[idx=257] [1009.60s -> 1014.24s] [audio=4.64s] [process=0.0000s] [rtf=0.0000]  Our production team also includes Andy Tagle, Clamary Schneider and Margaret Serino.
+[idx=258] [1014.80s -> 1020.56s] [audio=5.76s] [process=0.0000s] [rtf=0.0000]  Engineering support comes from Tiffany Vera Castro. I'm Mary El Segarras. Thanks for listening.
+[idx=259] [1021.52s -> 1032.08s] [audio=10.56s] [process=0.1994s] [rtf=0.0189]  This is our glass of this American life. Do you know our show? Okay, we'll be the way I'm going to tell you about
+[idx=260] [1032.08s -> 1037.52s] [audio=5.44s] [process=0.0000s] [rtf=0.0000]  it. We make stories that hopefully pull you into the beginning with funny moments and feelings and
+[idx=261] [1037.52s -> 1042.00s] [audio=4.48s] [process=0.0000s] [rtf=0.0000]  people in surprising situations and then you just want to find out what is going to happen and cannot
+[idx=262] [1042.00s -> 1047.84s] [audio=5.84s] [process=0.0000s] [rtf=0.0000]  stop listening. That's right. I'm talking about stories that make you miss appointments. This American
+[idx=263] [1047.84s -> 1049.84s] [audio=2.00s] [process=0.0627s] [rtf=0.0313]  life wherever you get your podcasts.
