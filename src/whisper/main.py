@@ -17,7 +17,7 @@ import numpy as np
 import alsaaudio, audioop
 from faster_whisper import WhisperModel
 
-MODEL_SIZES: List[str] = ['tiny', 'base'] 
+MODEL_SIZES: List[str] = ['tiny', 'medium', 'base'] 
 PRECISION: str = 'int8_float16' # this allows us to run on a GPU with int8.
 # if we want it to run it on a cpu, please use 'int8'
 RT_BATCH_DURATION: int = 2 # seconds

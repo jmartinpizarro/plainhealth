@@ -1,2 +1,3 @@
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.1031s] [rtf=0.0516]  그 앞에서, 그 앞에서, 그 앞에서
-[idx=1] [0.00s -> 2.00s] [audio=2.00s] [process=0.1061s] [rtf=0.0530]  сте фона права, сте фона права
+[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.0658s] [rtf=0.0329]  Esta es la vida de funcionar bien ahora.
+[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=1.3214s] [rtf=0.6607]  y ahora lo voy a ver a ver ahora.
+[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.0736s] [rtf=0.0368]  un tipo de problema.
