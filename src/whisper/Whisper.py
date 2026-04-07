@@ -49,7 +49,7 @@ class WhisperInference():
         else:
             if not isinstance(audio, (str)):
                 raise TypeError("[WhisperInference] :: For I/O inference, the <audio> parameter must be a string")
-            segments, info = self.model.transcribe(audio, beam_size=beam_size, language="es")
+            segments, info = self.model.transcribe(audio, beam_size=beam_size, language="en")
 
         return segments, info
     

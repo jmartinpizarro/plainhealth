@@ -42,20 +42,19 @@ def main():
     args = get_args()
     mode = args.rt # True for RT inference, False for loading a .mp3
 
-    model = WhisperInference(model_size=MODEL_SIZES[1], precision=PRECISION, batch_duration=RT_BATCH_DURATION, rt=mode)
-    try:
-        model.load_model() # download and load into memory
-    except Exception as e:
-        print(f"[main] :: An error has ocurred when loading the Whisper model\n{e}\n")
-
-    time.sleep(0.5)
-
     if not mode: # not rt
         # Currently, this script only runs some shitty ass benchmarks i just invented for testing
         # the accuracy between different size models.
         for MODEL_SIZE in MODEL_SIZES:
             print(f"[Whisper] :: Starting testing for Whisper model {MODEL_SIZE}...")
 
+            model = WhisperInference(model_size=MODEL_SIZE, precision=PRECISION, batch_duration=RT_BATCH_DURATION, rt=mode)
+            try:
+                model.load_model() # download and load into memory
+            except Exception as e:
+                print(f"[main] :: An error has ocurred when loading the Whisper model\n{e}\n")
+
+            time.sleep(0.5)
 
             # create a descriptor for logs
             with open(f"output/{MODEL_SIZE}_transcript.txt", "w") as f:
@@ -77,7 +76,8 @@ def main():
                         break
 
             print(f"[Whisper] :: Testing has ended for Whisper model {MODEL_SIZE}\n\n")
-            exit(0)
+
+        exit(0)
         
     # if here, then rt inference
 
@@ -97,6 +97,14 @@ def main():
     # mode.
 
     rt_model_size = MODEL_SIZES[1]
+
+    model = WhisperInference(model_size=rt_model_size, precision=PRECISION, batch_duration=RT_BATCH_DURATION, rt=mode)
+    
+    try:
+        model.load_model() # download and load into memory
+    except Exception as e:
+        print(f"[main] :: An error has ocurred when loading the Whisper model\n{e}\n")
+    time.sleep(0.5)
 
     os.makedirs("output/rt", exist_ok=True)
     output_path = f"output/rt/{rt_model_size}_transcript.txt"
