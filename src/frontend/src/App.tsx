@@ -1,121 +1,109 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useState, useRef } from 'react'
+import uc3m from './assets/uc3m.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [recordedAudioUrl, setRecordedAudioUrl] = useState<string | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [chunks, setChunks] = useState<Blob[]>([]);
+  
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const allChunksRef = useRef<Blob[]>([]); // for saving the chunks
+
+  const startRecording = async () => {
+    try {
+      // open the audio stream with some configs that do not work correctly, love it
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          noiseSuppression: true,
+          echoCancellation: true,
+        }
+      });
+
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+      allChunksRef.current = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+          allChunksRef.current.push(event.data);
+          setChunks(prev => [...prev, event.data]);
+          
+          // process chunks here
+          processChunk(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        // TODO: do i really want this?
+        const fullBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
+        const url = URL.createObjectURL(fullBlob);
+        setRecordedAudioUrl(url);
+        
+        // stop using the microphone
+        stream.getTracks().forEach(track => track.stop());
+      };
+
+      // set up the chunk size
+      mediaRecorder.start(2000);
+      setIsRecording(true);
+
+    } catch (err) {
+      console.error('Error when accessing to the microphone', err);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  };
+
+  const processChunk = async (chunk: Blob) => {
+    // const formData = new FormData();
+    // formData.append('audio', chunk, 'chunk.webm');
+    // await fetch('/api/transcribe', { method: 'POST', body: formData });
+    console.log('Procesando chunk de', chunk.size, 'bytes');
+  };
 
   return (
     <>
       <section id="center">
         <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+          <img src={uc3m} className="base" width="500" height="200" alt="Logo de Universidad Carlos III de Madrid" />
         </div>
         <div>
-          <h1>Get started</h1>
+          <h1>Transcribe en tiempo real</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Pulsa el botón de <code>GRABAR</code> y comienza a hablar.
           </p>
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
+        <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+          <button onClick={startRecording} disabled={isRecording}>
+            Grabar
+          </button>
+          <button onClick={stopRecording} disabled={!isRecording}>
+            Parar
+          </button>
+        </div>
+
+        {isRecording && (
+          <p style={{ color: 'red' }}>
+            Grabando...
+          </p>
+        )}
+
+        {recordedAudioUrl && (
+          <audio controls src={recordedAudioUrl} style={{ marginTop: '1rem' }} />
+        )}
+      </section>
       <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
-  )
+  );
 }
 
 export default App
