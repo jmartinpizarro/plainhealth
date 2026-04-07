@@ -1,0 +1,6 @@
+[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.5169s] [rtf=0.2585]  Esta es una prueba de transmisión.
+[idx=1] [0.00s -> 2.00s] [audio=2.00s] [process=0.3035s] [rtf=0.1518]  en tiempo real, estoy hablando...
+[idx=2] [0.00s -> 1.28s] [audio=1.28s] [process=0.3051s] [rtf=0.2384]  español para validar la atención.
+[idx=3] [0.00s -> 2.00s] [audio=2.00s] [process=0.2936s] [rtf=0.1468]  precisión si todo funciona
+[idx=4] [0.00s -> 1.28s] [audio=1.28s] [process=0.2974s] [rtf=0.2324]  el texto debería aparecer.
+[idx=5] [0.00s -> 3.00s] [audio=3.00s] [process=0.2983s] [rtf=0.0994]  pantalla casi al instante.

@@ -20,7 +20,7 @@ from huggingface_hub import login
 MODEL_SIZES: List[str] = ['tiny', 'medium', 'base'] 
 PRECISION: str = 'int8_float16' # this allows us to run on a GPU with int8.
 # if we want it to run it on a cpu, please use 'int8'
-RT_BATCH_DURATION: int = 2 # seconds
+RT_BATCH_DURATION: int = 1 # seconds
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -63,7 +63,6 @@ def main():
                 print("[Whisper] :: Detected language '%s' with probability %f" % (info.language, info.language_probability))
 
                 segment_iterator = iter(segments)
-                segment_index: int = 0
 
                 while True:
                     try:
@@ -81,20 +80,7 @@ def main():
         
     # if here, then rt inference
 
-    # may god bless Stackoverflow ;)
-
-    # Open the device in nonblocking capture mode. The last argument could
-    # just as well have been zero for blocking mode. Then we could have
-    # left out the sleep call in the bottom of the loop
     inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK, channels=1, rate=16000, format=alsaaudio.PCM_FORMAT_S16_LE, periods=160)
-
-    # The period size controls the internal number of frames per period.
-    # The significance of this parameter is documented in the ALSA api.
-    # For our purposes, it is suficcient to know that reads from the device
-    # will return this many frames. Each frame being 2 bytes long.
-    # This means that the reads below will return either 320 bytes of data
-    # or 0 bytes of data. The latter is possible because we are in nonblocking
-    # mode.
 
     rt_model_size = MODEL_SIZES[1]
 
@@ -102,6 +88,7 @@ def main():
     
     try:
         model.load_model() # download and load into memory
+
     except Exception as e:
         print(f"[main] :: An error has ocurred when loading the Whisper model\n{e}\n")
     time.sleep(0.5)
@@ -130,12 +117,9 @@ def main():
                     now = perf_counter()
                     if now - start >= RT_BATCH_DURATION and len(historic) > 0:
                         # do the inference
-                        segments, info = model.inference(historic, beam_size=1)
-                        # TODO: look if i can predefine a language
-                        print("[Whisper] :: Detected language '%s' with probability %f" % (info.language, info.language_probability))
+                        segments, _ = model.inference(historic, beam_size=1)
 
                         segment_iterator = iter(segments)
-                        segment_index: int = 0
 
                         while True:
                             try:
@@ -154,7 +138,6 @@ def main():
             except audioop.error as e:
                 print(f"[Whisper] :: An error  when processing the audio ocurred.\n{e}.\n")
                 exit(-1)
-
 
 
 if __name__ == '__main__':

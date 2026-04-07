@@ -44,12 +44,12 @@ class WhisperInference():
             audio_int16 = np.frombuffer(bytes(audio), dtype=np.int16)
             audio_float32 = audio_int16.astype(np.float32) / 32768.0
 
-            segments, info = self.model.transcribe(audio_float32, beam_size=beam_size, language="es")
+            segments, info = self.model.transcribe(audio_float32, beam_size=beam_size, language="es", vad_filter=True, no_repeat_ngram_size=2)
 
         else:
             if not isinstance(audio, (str)):
                 raise TypeError("[WhisperInference] :: For I/O inference, the <audio> parameter must be a string")
-            segments, info = self.model.transcribe(audio, beam_size=beam_size, language="en")
+            segments, info = self.model.transcribe(audio, beam_size=beam_size, language="en", vad_filter=True, no_repeat_ngram_size=2)
 
         return segments, info
     
@@ -82,3 +82,4 @@ class WhisperInference():
                 segment.text,
             )
         )
+        print(f"{segment.text} ", flush=True)
