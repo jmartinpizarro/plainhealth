@@ -1,7 +1,0 @@
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3629s] [rtf=0.1815]  ¡Gracias por ver el vídeo!
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3490s] [rtf=0.1745]  ¡Gracias por ver el vídeo!
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3513s] [rtf=0.1757]  ¡SUSCRÍBETE!
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3563s] [rtf=0.1782]  ¡Gracias por ver el vídeo!
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3602s] [rtf=0.1801]  ¡Gracias por ver el vídeo!
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3549s] [rtf=0.1774]  Esto es una prueba, esto es una prueba...
-[idx=0] [0.00s -> 2.00s] [audio=2.00s] [process=0.3339s] [rtf=0.1669]  Ahora hay que ver la precisión.

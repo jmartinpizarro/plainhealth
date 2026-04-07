@@ -8,14 +8,14 @@ environment.
 import time
 import argparse
 import os
+from dotenv import load_dotenv
 from typing import List
 from time import perf_counter
 
 from src.whisper.Whisper import WhisperInference
 
-import numpy as np
 import alsaaudio, audioop
-from faster_whisper import WhisperModel
+from huggingface_hub import login
 
 MODEL_SIZES: List[str] = ['tiny', 'medium', 'base'] 
 PRECISION: str = 'int8_float16' # this allows us to run on a GPU with int8.
@@ -33,6 +33,11 @@ def get_args():
 
 def main():
     print("[Whisper] :: Starting script")
+
+    load_dotenv()
+
+    HF_TOKEN = os.getenv('HF_TOKEN')
+    login(token=HF_TOKEN)
 
     args = get_args()
     mode = args.rt # True for RT inference, False for loading a .mp3
