@@ -112,5 +112,5 @@ class WhisperInference():
                     segment.text,
                 )
             )
-        
+        print(f"[WhisperInference - write_logs()] :: idx {segment_index} - {segment.text}", flush=True)
         return segment.text

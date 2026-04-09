@@ -8,6 +8,7 @@ from src.whisper.Whisper import WhisperInference
 
 from dotenv import load_dotenv
 from huggingface_hub import login
+from av.error import EOFError as AVEOFError
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,7 +40,7 @@ app.add_middleware(
 
 # load the whisper model with its configs
 MODEL_SIZE: str = 'medium'
-PRECISION: str = 'int8_float16' # precision for gpu
+PRECISION: str = 'float16' # precision
 RT_BATCH_DURATION: int = 1 # seconds
 # because the WhisperInference class allows the inference using files. And guess what it is sent
 # to the API... Exactly, a .webm!
@@ -94,7 +95,21 @@ async def transcribe_audio(
     audio_temp = bytearray()
     audio_temp.extend(audio_bytes)
 
-    segments, info = model.inference(audio_temp, beam_size=1)
+    try:
+        segments, info = model.inference(audio_temp, beam_size=1)
+    except AVEOFError:
+        # Keep session index updated and skip undecodable chunk.
+        SESSION_STATE[metadata.session_id] = {
+            "last_text": str(session_state["last_text"]),
+            "last_chunk_index": metadata.chunk_index,
+        }
+        return {
+            "message": "Chunk received but not decodable",
+            "session_id": metadata.session_id,
+            "chunk_index": metadata.chunk_index,
+            "is_last": metadata.is_last,
+            "text": "",
+        }
 
     print("[Whisper] :: Detected language '%s' with probability %f" % (info.language, info.language_probability), flush=True)
 
@@ -112,9 +127,9 @@ async def transcribe_audio(
     transcription = " ".join(texts)
 
     previous_full_text = str(session_state["last_text"])
-    incremental_text = transcription
+    delta_text = transcription
     if transcription.startswith(previous_full_text):
-        incremental_text = transcription[len(previous_full_text):].strip()
+        delta_text = transcription[len(previous_full_text):].strip()
 
     SESSION_STATE[metadata.session_id] = {
         "last_text": transcription,
@@ -129,5 +144,5 @@ async def transcribe_audio(
         "session_id": metadata.session_id,
         "chunk_index": metadata.chunk_index,
         "is_last": metadata.is_last,
-        "text": incremental_text,
+        "text": delta_text,
     }
