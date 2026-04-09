@@ -2,13 +2,19 @@ import { useState, useRef } from 'react'
 import uc3m from './assets/uc3m.png'
 import './App.css'
 
+const API_URL = "http://localhost:5000/api"
+
 function App() {
   const [recordedAudioUrl, setRecordedAudioUrl] = useState<string | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [chunks, setChunks] = useState<Blob[]>([]);
+  const [sessionId, setSessionId] = useState<string>('');
   
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const allChunksRef = useRef<Blob[]>([]); // for saving the chunks
+  const sessionIdRef = useRef<string>('');
+  const isStoppingRef = useRef(false);
+  const sendQueueRef = useRef<Promise<void>>(Promise.resolve());
 
   const startRecording = async () => {
     try {
@@ -24,13 +30,29 @@ function App() {
       mediaRecorderRef.current = mediaRecorder;
       allChunksRef.current = [];
 
+      // a random sessionId per audio sent - this might not make any sense at the moment but 
+      // because is a PoC and there are not any users, fuck it, we ball
+      const currentSessionId = self.crypto.randomUUID();
+      sessionIdRef.current = currentSessionId;
+      setSessionId(currentSessionId);
+      
+      let chunk_counter = 0;
       mediaRecorder.ondataavailable = (event) => {
         if (event.data && event.data.size > 0) {
           allChunksRef.current.push(event.data);
           setChunks(prev => [...prev, event.data]);
-          
-          // process chunks here
-          processChunk(event.data);
+
+          // Send a self-contained chunk for each request.
+          // Timesliced blobs are not always independently decodable.
+          const cumulativeBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
+          const isLastChunk = isStoppingRef.current;
+          sendQueueRef.current = sendQueueRef.current.then(() =>
+            processChunk(cumulativeBlob, chunk_counter, isLastChunk, currentSessionId)
+          );
+          if (isLastChunk) {
+            isStoppingRef.current = false;
+          }
+          chunk_counter++;
         }
       };
 
@@ -42,6 +64,7 @@ function App() {
         
         // stop using the microphone
         stream.getTracks().forEach(track => track.stop());
+        isStoppingRef.current = false;
       };
 
       // set up the chunk size
@@ -55,16 +78,38 @@ function App() {
 
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
+      isStoppingRef.current = true;
+      // Flush pending data before stopping.
+      mediaRecorderRef.current.requestData();
       mediaRecorderRef.current.stop();
       setIsRecording(false);
     }
   };
 
-  const processChunk = async (chunk: Blob) => {
-    // const formData = new FormData();
-    // formData.append('audio', chunk, 'chunk.webm');
-    // await fetch('/api/transcribe', { method: 'POST', body: formData });
-    console.log('Procesando chunk de', chunk.size, 'bytes');
+  const processChunk = async (
+    chunk: Blob,
+    chunkCounter: number,
+    isLast: boolean,
+    currentSessionId: string,
+  ) => {
+    const formData = new FormData();
+
+    formData.append('session_id', currentSessionId); // session_id
+    formData.append('chunk_index', chunkCounter.toString()); // chunk_index
+    formData.append('is_last', isLast ? 'true' : 'false'); // is_last
+    formData.append('audio', chunk, 'chunk.webm'); // audio
+
+    try {
+      const response = await fetch(API_URL+'/audio', { method: 'POST', body: formData });
+      if (!response.ok) {
+        const details = await response.text();
+        throw new Error(`Response status: ${response.status} - ${details}`);
+      }
+      const result = await response.json();
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
