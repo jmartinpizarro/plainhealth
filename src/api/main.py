@@ -39,7 +39,7 @@ app.add_middleware(
 
 # load the whisper model with its configs
 MODEL_SIZE: str = 'medium'
-PRECISION: str = 'int8' # CPU-friendly compute type
+PRECISION: str = 'int8_float16' # precision for gpu
 RT_BATCH_DURATION: int = 1 # seconds
 # because the WhisperInference class allows the inference using files. And guess what it is sent
 # to the API... Exactly, a .webm!

@@ -5,7 +5,7 @@ services:
       dockerfile: src/api/Dockerfile
     env_file:
       - .env
-    #gpus: all
+    gpus: all
     ports: 
       - "5000:5000"
 

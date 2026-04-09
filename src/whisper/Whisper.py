@@ -5,6 +5,7 @@ This script contains the class definition for the Whisper model inference
 import io
 from time import perf_counter
 from typing import Iterator, TextIO
+import ctranslate2
 from faster_whisper import WhisperModel
 
 
@@ -15,12 +16,26 @@ class WhisperInference():
         self.batch_duration: int = batch_duration
         self.rt_mode = True if rt else False # either is RT inference or I/O-based inference
         self.model = None
+        self.device = "cpu"
 
 
     def load_model(self):
-        # TODO: for the moment, assume always cuda
-        self.model = WhisperModel(self.model_size, device="cpu", compute_type=self.precision)
-        print("[WhisperInference] :: Model loaded")
+        cuda_devices = 0
+        try:
+            cuda_devices = ctranslate2.get_cuda_device_count()
+        except Exception:
+            cuda_devices = 0
+
+        # Prefer GPU when available, else fallback to CPU.
+        if cuda_devices > 0:
+            self.device = "cuda"
+            compute_type = self.precision
+        else:
+            self.device = "cpu"
+            compute_type = "int8"
+
+        self.model = WhisperModel(self.model_size, device=self.device, compute_type=compute_type)
+        print(f"[WhisperInference] :: Model loaded on {self.device} (compute_type={compute_type})", flush=True)
         return 1
 
 
