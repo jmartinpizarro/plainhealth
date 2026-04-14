@@ -97,6 +97,10 @@ def main():
 
         audios = sorted(os.listdir(audios_route))
         processed = 0
+        total_word_errors = 0
+        total_ref_words = 0
+        total_char_errors = 0
+        total_ref_chars = 0
 
         # for every audio in the list, look up the text file and run inference
         for audio in audios:
@@ -127,14 +131,59 @@ def main():
                 len(transcript),
             )
 
-            with open(f'{text_file}.transcript', 'w') as f:
-                f.write(transcript)
+            # metrics used in this study are WER (Word Error Rate)
+            # and CER (Character Error Rate)
+            with open(text_file, 'r', encoding='utf-8') as f:
+                reference_text = f.read()
+
+            wer = model.compute_wer(transcript=transcript, reference_text=reference_text)
+            cer = model.compute_cer(transcript=transcript, reference_text=reference_text)
+            word_errors, ref_words = model.compute_wer_counts(
+                transcript=transcript,
+                reference_text=reference_text,
+            )
+            char_errors, ref_chars = model.compute_cer_counts(
+                transcript=transcript,
+                reference_text=reference_text,
+            )
+
+            total_word_errors += word_errors
+            total_ref_words += ref_words
+            total_char_errors += char_errors
+            total_ref_chars += ref_chars
+
+            logging.info(
+                "[metrics] :: %s -> WER: %.4f (%d/%d), CER: %.4f (%d/%d)",
+                audio,
+                wer,
+                word_errors,
+                ref_words,
+                cer,
+                char_errors,
+                ref_chars,
+            )
 
         logging.info("[metrics] :: Total files processed with inference: %d", processed)
+        if total_ref_words > 0 and total_ref_chars > 0:
+            corpus_wer = total_word_errors / total_ref_words
+            corpus_cer = total_char_errors / total_ref_chars
+            logging.info(
+                "[metrics] :: Global WER: %.4f (%d/%d)",
+                corpus_wer,
+                total_word_errors,
+                total_ref_words,
+            )
+            logging.info(
+                "[metrics] :: Global CER: %.4f (%d/%d)",
+                corpus_cer,
+                total_char_errors,
+                total_ref_chars,
+            )
+        else:
+            logging.warning("[metrics] :: Not enough reference content to compute global WER/CER")
     except Exception:
         logger.exception("[metrics] :: Fatal error while running metrics inference")
         raise SystemExit(1)
-
 
     logging.info("[metrics] :: Metrics calculation has finished\n")
     
