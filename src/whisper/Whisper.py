@@ -53,7 +53,7 @@ class WhisperInference():
                 raise TypeError("""[WhisperInference] :: For I/O inference, the <audio> parameter 
                                 must be a string""")
             segments, info = self.model.transcribe(audio, beam_size=beam_size, language="es", 
-                                                   vad_filter=True, no_repeat_ngram_size=2)
+                                                   vad_filter=False, no_repeat_ngram_size=2)
 
         return segments, info
     

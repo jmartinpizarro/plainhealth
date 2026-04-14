@@ -81,6 +81,11 @@ def main():
         audios_route = os.path.normpath(os.path.join(rel_route, audios_route))
         texts_route = os.path.normpath(os.path.join(rel_route, texts_route))
 
+        transcripts_output_dir = os.path.normpath(
+            os.path.join("output", "metrics_transcripts", MODEL_SIZE)
+        )
+        os.makedirs(transcripts_output_dir, exist_ok=True)
+
         # load model only once for the full dataset
         rt_batch_duration = 1  # not used for file-based inference
         rt_inference = False
@@ -124,11 +129,21 @@ def main():
                 logger.exception("[metrics] :: Inference failed for file %s", audio_file)
                 continue
 
+            transcript_output_file = os.path.normpath(
+                os.path.join(transcripts_output_dir, f"{audio_stem}.txt")
+            )
+            with open(transcript_output_file, 'w', encoding='utf-8') as f:
+                f.write(transcript)
+
             processed += 1
             logging.info(
                 "[metrics] :: Inference OK for %s (%d chars)",
                 audio,
                 len(transcript),
+            )
+            logging.info(
+                "[metrics] :: Transcript saved to %s",
+                transcript_output_file,
             )
 
             # metrics used in this study are WER (Word Error Rate)
