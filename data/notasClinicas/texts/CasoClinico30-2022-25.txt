@@ -1,0 +1,24 @@
+#Motivo de consulta
+Molestias abdominales inespecíficas de apariencia banal.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Paciente de 52 años. FRCV: HTA.
+Antecedentes médicos personales: HTA. Hábitos tóxicos: tratamiento habitual: enalapril.
+Enfermedad actual: Acude por molestias abdominales inespecíficas desde hace 1 mes que consisten en sensación de plenitud, distensión abdominal, digestiones lentas/dispepsia en apariencia poco relevantes. Niega náuseas o vómitos. Sin cambios en ritmo deposicional basal. Además la paciente refiere estado de nerviosismo basal debido a situación conflictiva con su hija, insomnio de conciliación, algunas crisis de angustia aisladas y desconcentración y despistes en sus actividades cotidianas.
+Exploración física: Buen estado general, consciente orientada y colaboradora, bien hidratada y perfundida, normocoloreada, eupneica en reposo, hemodinámicamente estable. ACP: normal. Abdomen con RHA conservados. Blando, depresible ligeramente doloroso a la palpación en epigastrio. Murphy y Blumberg negativos. Sin signos de IP. Tacto rectal: esfínter normotenso sin lesiones a nivel externo y sin extracción de sangre fresca o restos hemáticos en guante. Resto de la exploración sin alteraciones. Desde el punto de vista psicopatológico la paciente puntúa 12 para test de Hamilton de Depresión (depresión menor) y 21 para test de Hamilton de ansiedad (Niveles altos de ansiedad).
+Se solicita analítica de perfil digestivo desde atención primaria, detectándose TSOH + y calprotectina alta. Resto analítica normal.
+#Enfoque familiar y comunitario
+Antecedentes médicos familiares: Madre y hermano materno cáncer de colon con < 65 años.
+Contexto familiar y social:
+- Desempleo y situación de pobreza y precariedad familiar.
+- Núcleo familiar: madre e hija.
+- Hija de 21 años con trastorno de ansiedad generalizada en tratamiento y trastorno desadaptativo. Mantienen relación conflictiva puesta que la hija tiene dificultades a nivel laboral y problemas con entablar relaciones sociales.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Juicio clínico:
+- Dolor abdominal a estudio en paciente con TSOH+ y Calprotectina alta y antecedentes familiares de riesgo a descartar patología oncológica como primera causa del cuadro.
+- Trastorno ansioso-depresivo reactivo a situación familiar como posible agravante de la sintomatología principal.
+- Problema social.
+Diagnóstico diferencial: Diverticulosis, lesiones colónicas benignas, angiodisplasia de colon, somatización etc.
+#Plan de acción y evolución
+Se decide derivar a consulta de aparato digestivo para realización de Colonoscopia.
+Apoyo psicológico e inicio tratamiento antidepresivo de perfil sedante: Citalopram 20 mg 1-0-0 y Mirtazapina 15 0-0-1.
+La colonoscopia reveló estenosis significativa medial colon descendente con características de malignidad por lo que se tomaron muestras para biopsia. Anatomía patológica confirmó un adenocarcinoma de colon. Se solicitó un TAC para estudio de extensión. Antes de volver a consulta hospitalaria para abordarje y actitud terapéutica la paciente acudió a consulta de Centro de Salud por lo que desde ahí se le comunicó la noticia acerca de su enfermedad.

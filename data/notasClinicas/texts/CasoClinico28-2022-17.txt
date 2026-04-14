@@ -1,0 +1,15 @@
+#Motivo de consulta
+Cefalea.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Varón de 48 años con antecedentes de hipertensión arterial, dislipemia, síndrome depresivo y portador en heterocigosis de la mutación para el Síndrome de Griscelli tipo I. Fumador con ICAT de 30. Tratamiento con enalapril.
+Acude a consulta de su médico de atención primaria por cefalea de dos meses de evolución que no cede con analgesia, asociando molestias en oído izquierdo. Se realiza exploración sin encontrar alteraciones destacables y se solicita TAC de cráneo ambulatorio.
+Tras tres semanas continúa con clínica y decide acudir al servicio de urgencias hospitalarias donde se le solicita TAC urgente y se objetiva ocupación de partes blandas en mastoides compatible con otitis media crónica y se deriva a consulta de otorrinolaringología. En esta consulta, le solicitan una RMN y se le realiza toma de biopsia.
+#Enfoque familiar y comunitario
+Padre de tres hijas totalmente dependientes por padecer síndrome de Griscelli, de las que tanto su mujer como él son los principales cuidadores. Tiene otro hijo de 22 años que no padece la enfermedad y que vive con ellos.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+La cefalea es uno de los principales motivos de consulta en atención primaria. Es importante diferenciar entre cefaleas primarias y secundarias ya que estas últimas, con una causa orgánica subyacente pueden suponer un riesgo vital para nuestro paciente.
+Atendiendo a la clasificación temporal de las cefaleas y centrándonos en las cefaleas agudas de reciente comienzo encontramos las secundarias a infecciones, trastornos de la homeostasia, o secundarias a trombosis de senos venosos, además de las secundarias a trastornos oculares u otorrinolaringológicos. En nuestro caso y habiendo descartado el resto de patologías por la normalidad de las pruebas analíticas y la ausencia de fiebre u otra clínica infecciosa, era necesaria la realización de un TAC craneal para determinar si existía algún tipo de lesión subyacente.
+Finalmente se llegó al diagnóstico de carcinoma nasofaríngeo de células escamosas no queratinizante. Por último, fue importante analizar la problemática social del caso por la situación familiar y poner a disposición del paciente los recursos sociales de los que disponíamos en el centro así como de una atención integral y personalizada por parte de todo el equipo (incluyendo trabajadora social, enfermero y médica).
+#Plan de acción y evolución
+Comienza tratamiento y seguimiento por parte de oncología con radioterapia.
+Evolución: Durante los siguientes meses sufre un tromboembolismo pulmonar y poco tiempo después comienza un empeoramiento progresivo.

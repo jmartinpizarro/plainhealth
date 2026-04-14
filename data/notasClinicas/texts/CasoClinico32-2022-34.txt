@@ -1,0 +1,14 @@
+#Motivo de consulta
+Coxalgia.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Varón de 44 años que acude a consulta por coxalgia izquierda de tres días de evolución que relaciona con sobreesfuerzo mecánico. El paciente acude con fiebre de 38.2º.
+Como antecedentes personales: consumo de drogas inhaladas y vo, sin pareja estable y con relaciones sexuales de riesgo (HSH).
+Se deriva al paciente al servicio de urgencias para estudio, donde se ingresa en planta de COT para punción articular ecoguiada de cadera izquierda con desbridamiento e inicio de antibioterapia empírica IV, siendo la sospecha de artritis séptica. Tras extracción de 12 cc de líquido articular y tratamiento con ceftriaxona 2 gr iv/24 horas durante 1 semana, se decide alta domiciliaria con mejoría y tratamiento con cefixima 400 mg vo/12 horas durante otra semana. Asimismo, el paciente es derivado a consultas de Medicina física y rehabilitación.
+Exploración: Balance pasivo doloroso, limitación de ambas rotaciones, aumento de la base de sustentación a la deambulación, flexores de cadera 4/5, extensores de rodilla 5/5, glúteo medio 4/5, glúteo mayor 4/5, trendelemburg negativo, apoyo monopodal inestable.
+Pruebas complementarias:
+- Rx cadera izquierda: sin signos de patología ósea aguda. Analítica: leucocitos 8.450, PMN 89%, PCR 218. TAC: Colección en articulación coxofemoral izquierda con centro hipodenso y realce marginal. Líquido articular: aspecto blanquecino-mucoso, 91000 leucocitos con 99% de PMN, GRAM -, glucosa indetectable, N. Gonorrhoeae positiva con antibiograma sensible a cefalosporinas.
+- Serología: virus hepatotropos negativos, VHB vacunado con altos títulos, VIH negativo, screening de sífilis positivo con RPR negativo.
+- Exudado uretral; N. Gonorrhoeae t C. Trachomatis negativos.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Artritis séptica de cadera izquierda de etiología gonocócica.
+Diagnóstico diferencial: Coxalgia mecánica. Artritis por microcristales. Artritis reumatoide. Osteomielitis. Neoplasia.

@@ -1,0 +1,10 @@
+#Motivo de consulta
+Síndrome constitucional.
+#Historia clínica
+Mujer de 27 años que acude a su médico de familia por presentar desde hace 4 meses astenia, tos seca, fiebre de predominio vespertino con sudoración nocturna y pérdida de apetito.
+#Examen
+En la exploración física se aprecia marcada palidez cutánea, adenopatías laterocervicales y supraclaviculares bilaterales, tensión arterial de 91/55 mmHg y fiebre de 39 ºC sin foco aparente. Se decide derivar a urgencias donde se realiza analítica y radiografía de tórax objetivándose anemia marcada subsidiaria de transfusión y adenopatías hiliares, por lo que se cursa ingreso en Medicina Interna donde se amplía estudio llegando al diagnóstico definitivo mediante biopsia de adenopatía cervical.
+#Tratamiento y evolución
+Tratamiento con quimioterapia y radioterapia del campo afecto así como abordaje holístico de la paciente desde Atención Primaria.
+#Diagnóstico principal
+Linfoma de Hodgkin tipo clásico.

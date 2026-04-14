@@ -1,0 +1,20 @@
+#Motivo de consulta
+Dolor y limitación funcional grave de hombro tras vacunación antigripal.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Paciente mujer de 73 años con antecedentes personales de hipertensión arterial, cáncer folicular tiroideo intervenido, hipotiroidismo iatrogénico en tratamiento sustitutivo con levotiroxina y dislipemia.
+Consulta por omalgia derecha y limitación funcional severa de un mes de evolución con escasa respuesta a antiinflamatorios y analgésicos habituales. Relaciona los síntomas con administración de vacuna antigripal en semanas previas, refiriendo inicio progresivo del dolor a las 48 horas de la vacunación. Asintomática previamente. No contusión ni sobreesfuerzo posterior.
+A la exploración, ausencia de lesiones cutáneas, signos inflamatorios ni tumoración en espesor de musculatura deltoidea. Limitación activa de abducción a partir de 45º y rotación externa, siendo muy dolorosas con la movilización pasiva. Maniobras de Neer, Hawkins y Yocum positivas. Maniobra de Jobe negativa.
+Se realiza ecografía de hombro en el centro de salud, donde se evidencian los siguientes hallazgos:
+- Cortical ósea irregular en relación con signos degenerativos.
+- Tenosinovitis bicipital.
+- Imagen anecoica en región anterior del tendón del subescapular, compatible con bursitis subacromiosubdeltoidea, de hasta 6 mm de espesor.
+#Enfoque familiar y comunitario
+La paciente es independiente para actividades básicas de la vida diaria y convive en domicilio con su marido. El dolor y la limitación funcional le impiden realizar sus actividades ordinarias de forma plena, requiriendo ayuda para las mismas a través de cuidadora formal (que no precisaba previamente) e informal (familiar de primer grado).
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Bursitis subacromiodeltoidea en posible relación con vacunación o SIRVA (Shoulder injury related to vaccine administration).
+#Plan de acción y evolución
+Dada limitación funcional intensa, se opta por varios cursos terapéuticos:
+- Se solicita realización de rehabilitación en Sala de Fisioterapia del centro de salud.
+- Se solicita valoración al servicio de Medicina Física y Rehabilitación de Hospital de referencia a través de teleconsulta para consejo y seguimiento.
+- Se adjuntan ejercicios para realizar en domicilio, con el objetivo de movilizar sin carga el miembro afecto y evitar complicaciones.
+La paciente realiza terapia rehabilitadora y fisioterapia en el centro de salud durante varias semanas, con resolución del líquido libre en bursa subacromiosubdeltoidea (confirmado por control ecográfico), así como desaparición del dolor y la limitación funcional.

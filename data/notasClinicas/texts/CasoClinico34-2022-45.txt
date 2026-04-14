@@ -1,0 +1,17 @@
+#Motivo de consulta
+Mareo y dolor torácico.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Varón de 30 años, que inicia con mareo y visión borrosa mientras estaba en una reunión de trabajo. Posteriormente comienza con dolor en costado izquierdo de forma brusca. Se toma dexketoprofeno 25 mg, con lo que solo alivia de forma parcial; por lo que contacta con urgencias. No pérdida de consciencia, no tos, no expectoración, no disnea.
+Diagnosticado 8 días antes de COVID 19, presentando únicamente odinofagia y fiebre. AP de asma bronquial estacional con deficiente control. En primavera utiliza furoato de fluticasona, levocabastina y loratadina. Conductas de riesgo: tabaquismo.
+Exploración física: Signos vitales dentro de la normalidad. Consciente y orientado. Ventilación espontanea, sin disnea, con movilidad torácica normal. Disminución de murmullo vesicular en ápex izquierdo. No se aprecia ingurgitación yugular. Auscultación cardiaca normal, rítmico.
+Pruebas complementarias:
+- RX tórax: neumotórax.
+- TAC tórax: leve neumotórax anterior en LSI con quistes aéreos apicales bilaterales, muy sugerente de Histiocitosis X.
+#Enfoque familiar y comunitario
+El marero y el dolor torácico es una patología muy frecuente en la atención de urgencias tanto intra, como extra hospitalarias para el médico de familia. Desde el punto de vista de atención primaria, el espectro del dolor torácico ha presentado un repunte importante gracias al aumento en las patologías respiratorias secundarias a la infección por COVID 19; por lo que debemos realizar una minuciosa exploración para obtener una adecuada aproximación diagnóstica y una derivación oportuna ante posibles casos de neumotórax y enfermedades tromboembólicas, sin centrar nuestra atención únicamente en el antecedente de infección por COVID 19 y las posibles secuelas del ello. Además, siendo el tabaquismo el principal factor modificable que predispone para el desarrollo de la Histiocitosis X, cabe resaltar la importancia de los programas de deshabituación tabáquica en las comunidades.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+1. Neumotórax izquierdo espontaneo, primer episodio; secundario a histiocitosis X.
+2. Infección reciente por COVID-19 (8 días antes).
+3. Tabaquismo activo.
+#Plan de acción y evolución
+Durante evolución en planta de neumología persiste neumotórax apical izquierdo sin conseguir reexpansión a pesar de aspiración con drenaje pleural. Se intenta pinzar tubo de drenaje pleural, con desarrollo de enfisema subcutáneo. Por ello consultan con cirugía de tórax, que solicita realizar TAC. Ante resultados y la persistencia de fuga, se decide traslado a cirugía de tórax, quienes realizan videotoracoscopia izquierda y resección de bullas más pleurodesis.

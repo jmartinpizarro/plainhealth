@@ -1,0 +1,17 @@
+#Motivo de consulta
+Afasia motora, deterioro cognitivo y caídas frecuentes de 3 días de evolución.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Anamnesis: Mujer de 56 años que acude acompañada de su hija por referir afasia motora progresiva, deterioro cognitivo y caídas frecuentes desde hace 3 días. Sin alergias medicamentosas conocidas. Hábitos tóxicos: fumadora de 10 cig/día.
+Antecedentes personales: Epilepsia focal refractaria, en seguimiento por Neurología. Intervenciones quirúrgicas: fractura de cadera izquierda (hace 8 meses). Tratamiento domiciliario: topiramato 200 mg cada 12 horas, Perampanel 10 mg cada 24 horas, Carbamazepina 200 mg cada 8 horas, Diazepam 10 mg cada 24 horas.
+Exploración: Acude a consulta en camilla. Palidez cutáneo-mucosa. Se muestra consciente, desorientada y nada colaboradora. Pupilas isocóricas y normorreactivas a la luz. Lenguaje ininteligible, aunque comprende frases. Resto de exploración neurológica dificultada por la falta de colaboración. Auscultación cardiorrespiratoria con tonos rítmicos, a buena frecuencia, sin soplos audibles y con murmullo vesicular conservado, sin ruidos patológicos. En cuanto a la exploración abdominal, resultó anodina. Miembros inferiores sin edemas ni lesiones dérmicas, aunque el izquierdo presenta leve acortamiento con respecto al contralateral.
+Pruebas complementarias:
+- Análisis de sangre: pancitopenia (hemoglobina 2.3 g/dl con hematocrito bajo y volumen elevado, leucopenia de 9400/L y plaquetopenia de 40.000/L) sin observarse células inmaduras en frotis. Además, déficit de vitamina B12, B6, C, D, hierro y ácido fólico. Anticuerpos anti-factor intrínseco y anti-células parietales negativos.
+- Análisis de orina: sistemático normal y tóxicos negativos.
+- TC cráneo sin contraste: sin hallazgos de patología aguda.
+#Enfoque familiar y comunitario
+Dependiente para las actividades básicas de la vida diaria (ABVD). Vive sola y tiene una hija que le visita 2 veces a la semana. Recibe servicio de ayuda a domicilio 1 hora diaria. Camina en silla de ruedas desde fractura de cadera.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Pancitopenia y encefalopatía de origen carencial. Diagnóstico diferencial Accidente vascular cerebral, consumo de fármacos o tóxicos, infección (urinaria, sistema nervioso central, etc).
+#Plan de acción y evolución
+Se cursa ingreso en planta de Medicina Interna. Se transfunden 4 concentrados de hematíes y 1 pool de plaquetas, y se realiza tratamiento con vitaminas de complejo B, C y ácido fólico, además de sueroterapia y nutrición enteral.
+Evolución: Tras ello, evolucionó favorablemente hasta situación similar a la basal domiciliaria. Se contacta con su hija y su cuidadora principal para mejora de cuidados y seguimiento de la paciente. Se contacta con trabajador social del centro, valorándose derivación a residencia al alta.

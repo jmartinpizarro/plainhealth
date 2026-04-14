@@ -1,0 +1,19 @@
+#Motivo de consulta
+Solicitud analítica de control.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Paciente mujer de 76 años sin AF de interés ni hábitos tóxicos, diagnosticada de HTA, hipotiroidismo, osteopenia, síndrome ansioso-depresivo de larga evolución. En tratamiento con enalapril 20 mg/hidroclorotiazida 12.5 mg, esomeprazol 40 mg, lorazepam 1 mg, sertralina 100 mg, carbonato cálcico 2.5 mg.
+Acude a consulta para solicitar analítica de control. En dicho análisis se objetiva hipercalcemia (10.9 mg/dl). Resto de parámetros normales.
+La paciente niega síntomas típicos de hipercalcemia. Niega síndrome constitucional y dolores óseos. No otros síntomas por aparatos.
+#Enfoque familiar y comunitario
+Vive con su marido. Independiente para todas las AIVD. Funciones superiores conservadas. Buen apoyo familiar.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Hipercalcemia leve a estudio. Posibles etiologías:
+1. Hiperparatiroidismo primario.
+2. Neoplasia maligna primaria (pulmón, riñón, ovario, cabeza y cuello y esófago).
+3. Insuficiencia renal.
+4. Enfermedad maligna que daña hueso (mieloma, linfoma y metástasis).
+5. Fármacos (diuréticos tiazídicos, suplementos de calcio).
+6. Inmovilización, litio, hipertiroidismo, enfermedades granulomatosas...
+#Plan de acción y evolución
+Basándonos en el algoritmo diagnóstico de la hipercalcemia, iniciamos nuestra actuación calculando el calcio corregido para confirmar la hipercalcemia. Tras confirmarla, retiramos los suplementos de calcio y la hidroclorotiazida de su tratamiento, por ser estos una posible causa: se suspende carbonato cálcico 2.5 mg y enalapril 20 mg/hidroclorotiazida 12.5 mg, y se sustituye por enalapril 20 mg y amlodipino 5 mg.
+Evolución: Posteriormente, realizamos analítica sanguínea para ver si se ha corregido la hipercalcemia. En nuevo análisis, observamos que las cifras de calcio se mantienen por encima de los límites normales (11 mg/dl). De nuevo, siguiendo protocolo diagnóstico de hipercalcemia, solicitamos analítica de control con determinación de hormona paratiroidea. Los resultados muestran elevación de la misma (127 mg/dl). A continuación, comprobamos calciuria para determinar si la paciente presenta un hiperparatiroidismo primario. En dicho análisis de orina, se objetiva una excreción de calcio en orina de 24 horas por encima de los valores de la normalidad (279.5 mg/24 h), con un cociente Aclaramiento de calcio y Aclaramiento de creatinina por encima de 0.02, por lo que confirmamos que estamos ante un caso de hiperparatiroidismo primario y derivamos a Endocrinología para valoración y tratamiento.

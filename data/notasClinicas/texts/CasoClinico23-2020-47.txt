@@ -1,0 +1,12 @@
+#Motivo de consulta
+Episodios repetidos de tos, disnea y fiebre.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Mujer de 61 años, diagnosticada de neumonía criptogenética tras tres episodios considerados neumonía resistentes al tratamiento. La infrecuencia del proceso, sus frecuentes recidivas y la ausencia, en ocasiones, de signos auscultatorios, conducían a un mal abordaje en la consulta de Urgencias. El papel de su médico de familia ha sido determinante, al sospechar nueva recaída y/o al modificar el tratamiento corticoideo de base, con la mejoría subsiguiente.
+#Enfoque familiar y comunitario
+Separada. Auxiliar administrativa. Vive con un hijo soltero.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Juicio clínico: Neumonía criptogenética.
+Diagnóstico diferencial con neumonía aguda por bacterias resistentes, TEP, neoplasias, vasculitis, sarcoidosis y toxicidad por drogas.
+#Plan de acción y evolución 
+Seguimiento conjunto de Neumología y Atención Primaria para valorar precozmente aparición de síntomas respiratorios, instaurar tratamiento y evitar ingresos hospitalarios.
+Evolución: Se propone el diagnostico después de 3 episodios de neumonía. Presenta rápida mejoría al instaurar corticoides orales y sufre recaída tras suspensión o reducción de dosis.

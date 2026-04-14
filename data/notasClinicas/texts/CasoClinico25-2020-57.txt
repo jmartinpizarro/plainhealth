@@ -1,0 +1,10 @@
+#Motivo de consulta
+Control de FRCV.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias)
+Varón de 60 años con síndrome metabólico y cardiopatía isquémica crónica multivaso revascularizada parcialmente. Acude a Urgencias en varias ocasiones en los últimos años por episodios de dolor centrotorácico opresivo que ceden con CFN sublingual.
+A su llegada a consulta, nos comenta que hace unas horas ha vuelto a tener un nuevo episodio anginoso autolimitado. Actualmente, asintomático. A la auscultación, rítmico y taquicárdico. TA 90/55, pulso palpable. No dolor torácico, no disnea, no cortejo vegetativo. ECG: taquicardia ventricular monomorfa a 180 lpm.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Realiza seguimiento de su patología crónica en Centro de Salud sin mucha regularidad y con mal control de FRCV.
+Juicio clínico: Taquicardia ventricular.
+#Plan de acción y evolución
+Se monitoriza al paciente y contactamos con 061. Se inicia perfusión con Amiodarona 150 mg IV. Tras unos minutos, el paciente vuelve a ritmo sinusal, estabilizándose TA y FC. En ECG de control, se objetivan varias extrasístoles ventriculares y un BCRDHH no conocido como posibles desencadenantes. Se traslada al paciente a Hospital de referencia.

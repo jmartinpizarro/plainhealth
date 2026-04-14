@@ -1,0 +1,12 @@
+#Motivo de consulta
+Paciente mujer de 68 años que visitamos en domicilio por dolor abdominal generalizado con náuseas.
+#Historia clínica
+Antecedentes personales: intolerancia a AAS y codeína. Dislipemia. Síndrome ASA. Cifoescoliosis severa. No intervenciones quirúrgicas previas.
+Anamnesis: refiere dolor abdominal tipo cólico, sin fiebre. Presenta náuseas. No refiere diarreas.
+#Examen
+A la exploración presenta un aceptable estado general, bien hidratada y perfundida, estable hemodinamicamente. Auscultación cardiopulmonar normal. Llama la atención una distensión abdominal y timpanismo a la percusión, con disminución de los ruidos hidroaéreos, dolor difuso abdominal con mayor focalización a nivel de mesogastrio y fosa iliaca derecha.
+Dado que la paciente no ha presentado diarrea, ni refiere transgresiones dietéticas, y que los datos analíticos y ecográficos sugieren un proceso de mayor gravedad, incluso de carácter quirúrgico, se decide la derivación a urgencias hospitalarias ya que el diagnóstico de GEA parece poco probable.
+#Tratamiento y evolución
+A su llegada a urgencias se le practica una nueva analítica donde se constata ligera leucocitosis y PCR más elevada que la previa. Se le realiza TAC con contraste de abdomen iv, siendo el diagnóstico final de trombosis venosa esplénica. La paciente fue ingresada y tratada con anticoagulantes, mostrando una evolución favorable sin requerir cirugía finalmente.
+#Diagnóstico principal
+Ante la tórpida evolución de la paciente que continúa con dolor abdominal y la presencia de líquido libre en la ecografía de abdomen, sospechamos la existencia de un abdomen agudo, motivo por el que derivamos.

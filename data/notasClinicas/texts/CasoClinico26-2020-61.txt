@@ -1,0 +1,10 @@
+#Motivo de consulta
+Dolor abdominal + astenia.
+#Enfoque individual (anamnesis, exploración y pruebas complementarias) 
+Mujer de 17 años, sin antecedentes previos de interés, que acude a urgencias hospitalarias por malestar general, dolor abdominal inespecífico y moderada astenia de dos o tres meses de evolución, con diagnóstico al alta de proceso viriásico. Acude a su médico de Atención Primaria, que objetiva hemoglobina de 5.7 g/dl, por lo que la deriva de nuevo al hospital para tratamiento y estudio. Tras realizar TC de abdomen descubren masa a nivel mesogástrico. Se deriva a Hospital Virgen del Rocío por sospecha de tumoración rara infantil, donde la intervienen.
+#Enfoque familiar y comunitario
+Hija única, buen apoyo familiar.
+#Juicio clínico (listado de problemas y diagnóstico diferencial)
+Tumor raboide extrarrenal maligno primario de íleon con afectación peritoneal y hepática (estadio IV). Diagnóstico diferencial con GIST intestinal, entre otros.
+#Plan de acción y evolución
+En tratamiento quimioterápico en Hospital Virgen del Rocío, hasta la fecha.

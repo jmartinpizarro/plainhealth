@@ -1,0 +1,10 @@
+#Motivo de consulta
+Dolor abdominal y poliartralgias.
+#Historia clínica
+Varón de 65 años que acude por dolor abdominal irradiado en cinturón y vómitos que no mejora con tratamiento, se decide derivar a Urgencias hospitalarias para continuar estudio y control sintomático.
+#Examen
+A la exploración presentó buen estado general, hidratado, auscultación cardiopulmonar normal, edema en miembros inferiores con fóvea, artralgia generalizadas, analíticamente PCR 403.4 mg/L, Hb 9.8 g/dL, leucocitosis con neutrofilia y dímero- D 4248 ng/ml. Se realizó Angio-TAC con resultado negativo para Tromboembolismo Pulmonar, pero se evidenció nódulos pulmonares cavitados. Ingreso en Medicina Interna para continuar estudio.
+#Tratamiento y evolución
+Confirmado la presencia de ANAs positivo C-ANCA se decide inicio de tratamiento con corticoide, inmunosupresor y biológico.
+#Diagnóstico principal
+Lesiones inflamatorias/ infecciosas o de origen metastáticos. Vasculitis.
