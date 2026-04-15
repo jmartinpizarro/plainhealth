@@ -14,9 +14,6 @@ function App() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const allChunksRef = useRef<Blob[]>([]); // for saving the chunks
   const sessionIdRef = useRef<string>('');
-  const isStoppingRef = useRef(false);
-  const sendQueueRef = useRef<Promise<void>>(Promise.resolve());
-  const lastHandledChunkRef = useRef(-1);
 
   const startRecording = async () => {
     try {
@@ -33,7 +30,6 @@ function App() {
       allChunksRef.current = [];
       setChunks([]);
       setLiveTranscript('');
-      lastHandledChunkRef.current = -1;
 
       // a random sessionId per audio sent - this might not make any sense at the moment but 
       // because is a PoC and there are not any users, fuck it, we ball
@@ -41,36 +37,24 @@ function App() {
       sessionIdRef.current = currentSessionId;
       setSessionId(currentSessionId);
       
-      let chunk_counter = 0;
       mediaRecorder.ondataavailable = (event) => {
         if (event.data && event.data.size > 0) {
           allChunksRef.current.push(event.data);
           setChunks(prev => [...prev, event.data]);
-
-          // Send a self-contained chunk for each request.
-          // Timesliced blobs are not always independently decodable in isolation.
-          const cumulativeBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
-          const isLastChunk = isStoppingRef.current;
-          const currentChunkIndex = chunk_counter;
-          sendQueueRef.current = sendQueueRef.current.then(() =>
-            processChunk(cumulativeBlob, currentChunkIndex, isLastChunk, currentSessionId)
-          );
-          chunk_counter++;
         }
       };
 
       mediaRecorder.onstop = () => {
-        // TODO: do i really want this?
         const fullBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
         const url = URL.createObjectURL(fullBlob);
         setRecordedAudioUrl(url);
+        void processFullAudio(fullBlob, currentSessionId);
         
         // stop using the microphone
         stream.getTracks().forEach(track => track.stop());
-        isStoppingRef.current = false;
       };
 
-      // set up the chunk size
+      // Keep chunks only for local buffering; upload happens once on stop.
       mediaRecorder.start(1000);
       setIsRecording(true);
 
@@ -81,7 +65,6 @@ function App() {
 
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
-      isStoppingRef.current = true;
       // Flush pending data before stopping.
       mediaRecorderRef.current.requestData();
       mediaRecorderRef.current.stop();
@@ -89,18 +72,11 @@ function App() {
     }
   };
 
-  const processChunk = async (
-    chunk: Blob,
-    chunkCounter: number,
-    isLast: boolean,
-    currentSessionId: string,
-  ) => {
+  const processFullAudio = async (audioBlob: Blob, currentSessionId: string) => {
     const formData = new FormData();
 
-    formData.append('session_id', currentSessionId); // session_id
-    formData.append('chunk_index', chunkCounter.toString()); // chunk_index
-    formData.append('is_last', isLast ? 'true' : 'false'); // is_last
-    formData.append('audio', chunk, 'chunk.webm'); // audio
+    formData.append('session_id', currentSessionId);
+    formData.append('audio', audioBlob, 'recording.webm');
 
     try {
       const response = await fetch(API_URL+'/audio', { method: 'POST', body: formData });
@@ -109,16 +85,7 @@ function App() {
         throw new Error(`Response status: ${response.status} - ${details}`);
       }
       const result = await response.json();
-      console.log(result)
-
-      if (result.chunk_index > lastHandledChunkRef.current) {
-        lastHandledChunkRef.current = result.chunk_index;
-        const chunkText = (result.text || '').trim();
-        if (chunkText) {
-          const entry = `[chunk ${result.chunk_index}] ${chunkText}`;
-          setLiveTranscript((prev) => (prev ? `${prev}\n${entry}` : entry));
-        }
-      }
+      setLiveTranscript((result.text || '').trim());
     } catch (error) {
       console.log(error)
     }
@@ -164,13 +131,13 @@ function App() {
             textAlign: 'left',
           }}
         >
-          <strong>Transcripción en vivo</strong>
+          <strong>Transcripción</strong>
           <p style={{ marginTop: '0.5rem', lineHeight: 1.4, whiteSpace: 'pre-wrap' }}>
             {liveTranscript || 'Aquí aparecerá el texto reconocido...'}
           </p>
           <small>Sesión: {sessionId || '-'}</small>
           <br />
-          <small>Chunks enviados: {chunks.length}</small>
+          <small>Chunks grabados: {chunks.length}</small>
         </div>
 
         {recordedAudioUrl && (
