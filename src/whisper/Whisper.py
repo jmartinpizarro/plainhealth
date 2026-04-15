@@ -2,10 +2,10 @@
 This script contains the class definition for the Whisper model inference
 """
 
+import io
 from time import perf_counter
 from typing import Iterator, TextIO
-
-import numpy as np
+import ctranslate2
 from faster_whisper import WhisperModel
 
 
@@ -15,12 +15,27 @@ class WhisperInference():
         self.precision: str = precision
         self.batch_duration: int = batch_duration
         self.rt_mode = True if rt else False # either is RT inference or I/O-based inference
+        self.model = None
+        self.device = "cpu"
 
 
     def load_model(self):
-        # TODO: for the moment, assume always cuda
-        self.model = WhisperModel(self.model_size, device="cuda", compute_type=self.precision)
-        print("[WhisperInference] :: Model loaded")
+        cuda_devices = 0
+        try:
+            cuda_devices = ctranslate2.get_cuda_device_count()
+        except Exception:
+            cuda_devices = 0
+
+        # Prefer GPU when available, else fallback to CPU.
+        if cuda_devices > 0:
+            self.device = "cuda"
+            compute_type = self.precision
+        else:
+            self.device = "cpu"
+            compute_type = "int8"
+
+        self.model = WhisperModel(self.model_size, device=self.device, compute_type=compute_type)
+        print(f"[WhisperInference] :: Model loaded on {self.device} (compute_type={compute_type})", flush=True)
         return 1
 
 
@@ -36,31 +51,45 @@ class WhisperInference():
         some information about the model (language predicted)
         """
 
-        if self.rt_mode:
-            if not isinstance(audio, (bytearray)):
-                raise TypeError("[WhisperInference] :: For RT inference, the <audio> parameter must be a bytearray")
-            # now it is needed to normalised to [-1, 1]
-            # x_norm = x_int16 / 32768.0 (float32 if possible for precission)
-            audio_int16 = np.frombuffer(bytes(audio), dtype=np.int16)
-            audio_float32 = audio_int16.astype(np.float32) / 32768.0
+        if self.model is None:
+            raise RuntimeError("[WhisperInference] :: Model is not loaded. Call load_model() first")
 
-            segments, info = self.model.transcribe(audio_float32, beam_size=beam_size, language="es", vad_filter=True, no_repeat_ngram_size=2)
+        # For browser RT, audio usually arrives encoded (webm/opus).
+        # Use an in-memory stream so we do not rely on temporary files.
+        if isinstance(audio, str):
+            segments, info = self.model.transcribe(
+                audio,
+                beam_size=beam_size,
+                language="es",
+                vad_filter=True,
+                no_repeat_ngram_size=2,
+            )
+            return segments, info
 
-        else:
-            if not isinstance(audio, (str)):
-                raise TypeError("[WhisperInference] :: For I/O inference, the <audio> parameter must be a string")
-            segments, info = self.model.transcribe(audio, beam_size=beam_size, language="en", vad_filter=True, no_repeat_ngram_size=2)
+        if not isinstance(audio, bytearray):
+            raise TypeError("[WhisperInference] :: The <audio> parameter must be a file path or a bytearray")
+
+        audio_stream = io.BytesIO(bytes(audio))
+        segments, info = self.model.transcribe(
+            audio_stream,
+            beam_size=beam_size,
+            language="es",
+            vad_filter=True,
+            no_repeat_ngram_size=2,
+        )
 
         return segments, info
     
 
-    def write_logs(self, segments: Iterator, f: TextIO, segment_index: int):
+    def write_logs(self, segments: Iterator, segment_index: int, f: TextIO | None=None) -> str:
         """
         Write the logs of the inference in a .txt file
 
         :param segments: Iterable[Segment]: an iterable with all the contents of the predictions
         :param f: TextIO: file decriptor
         :param segment_idx: int: current segment index
+
+        :returns the text transcripted
         """
         start_time = perf_counter()
         try:
@@ -70,16 +99,18 @@ class WhisperInference():
         process_time = perf_counter() - start_time
         batch_duration: float = segment.end - segment.start
         rtf: float = process_time / batch_duration if batch_duration > 0 else 0.0
-        f.write(
-            "[idx=%d] [%.2fs -> %.2fs] [audio=%.2fs] [process=%.4fs] [rtf=%.4f] %s\n"
-            % (
-                segment_index,
-                segment.start,
-                segment.end,
-                batch_duration,
-                process_time,
-                rtf,
-                segment.text,
+        if f:
+            f.write(
+                "[idx=%d] [%.2fs -> %.2fs] [audio=%.2fs] [process=%.4fs] [rtf=%.4f] %s\n"
+                % (
+                    segment_index,
+                    segment.start,
+                    segment.end,
+                    batch_duration,
+                    process_time,
+                    rtf,
+                    segment.text,
+                )
             )
-        )
-        print(f"{segment.text} ", flush=True)
+        print(f"[WhisperInference - write_logs()] :: idx {segment_index} - {segment.text}", flush=True)
+        return segment.text

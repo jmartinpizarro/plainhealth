@@ -42,6 +42,9 @@ def main():
     args = get_args()
     mode = args.rt # True for RT inference, False for loading a .mp3
 
+    # TODO both modes should convert into bytes de audio and then execute inference(). not rt mode
+    # does not actually work
+
     if not mode: # not rt
         # Currently, this script only runs some shitty ass benchmarks i just invented for testing
         # the accuracy between different size models.
@@ -66,7 +69,7 @@ def main():
 
                 while True:
                     try:
-                        model.write_logs(segment_iterator, f, segment_index)
+                        model.write_logs(segment_iterator, segment_index, f)
                         segment_index += 1
                     except StopIteration: # no more segments to process for this batch
                         f.flush()
@@ -123,7 +126,7 @@ def main():
 
                         while True:
                             try:
-                                model.write_logs(segment_iterator, f, segment_index)
+                                model.write_logs(segment_iterator, segment_index, f)
                                 segment_index += 1
                             except StopIteration: # no more segments to process for this batch
                                 f.flush()
