@@ -3,6 +3,8 @@ This script contains all the code related with the PlainHealth API
 """
 
 import os
+from typing import Any
+import httpx
 
 from src.whisper.Whisper import WhisperInference
 
@@ -18,6 +20,51 @@ from models.AudioRequest import AudioRequestModel
 # set up env environment variables for faster model downloads
 load_dotenv()
 HF_TOKEN = os.getenv('HF_TOKEN')
+GEMINI_API_KEY = os.getenv('ENV_API_KEY') or os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
+
+REPORT_SECTIONS = [
+    "MOTIVO_DE_CONSULTA",
+    "RESUMEN_CLINICO",
+    "ANAMNESIS",
+    "SINTOMAS_REFERIDOS",
+    "ANTECEDENTES_PERSONALES",
+    "ANTECEDENTES_FAMILIARES",
+    "MEDICACION_ACTUAL",
+    "ALERGIAS",
+    "EXPLORACION_FISICA",
+    "PRUEBAS_COMPLEMENTARIAS",
+    "VALORACION",
+    "PLAN",
+    "RED_FLAGS",
+]
+
+MEDICAL_PROMPT_TEMPLATE = """Eres un asistente clinico. Convierte la transcripcion medica libre en un informe medico estructurado.
+
+Reglas de salida (obligatorias):
+1) Responde SOLO con texto plano (no JSON, no markdown, no bloque de codigo).
+2) Usa EXACTAMENTE este formato de secciones y no omitas ninguna:
+MOTIVO_DE_CONSULTA:
+RESUMEN_CLINICO:
+ANAMNESIS:
+SINTOMAS_REFERIDOS:
+ANTECEDENTES_PERSONALES:
+ANTECEDENTES_FAMILIARES:
+MEDICACION_ACTUAL:
+ALERGIAS:
+EXPLORACION_FISICA:
+PRUEBAS_COMPLEMENTARIAS:
+VALORACION:
+PLAN:
+RED_FLAGS:
+3) Si falta un dato, escribe exactamente: No referido.
+4) No inventes diagnosticos, hallazgos o tratamientos no mencionados.
+5) Usa lenguaje medico formal, claro y conciso.
+6) Mantener idioma: espanol.
+
+Transcripcion:
+"""
+
 if HF_TOKEN:
     login(token=HF_TOKEN)
 else:
@@ -56,6 +103,90 @@ try:
 except Exception as e:
     MODEL_LOAD_ERROR = str(e)
     print(f"[main] :: An error has ocurred when loading the Whisper model\n{e}\n", flush=True)
+
+
+def _extract_gemini_text(payload: dict[str, Any]) -> str:
+    candidates = payload.get("candidates") or []
+    if not candidates:
+        return ""
+
+    content = candidates[0].get("content") or {}
+    parts = content.get("parts") or []
+    texts: list[str] = []
+    for part in parts:
+        text = part.get("text")
+        if isinstance(text, str) and text.strip():
+            texts.append(text)
+    return "\n".join(texts).strip()
+
+
+async def _generate_medical_report(transcription: str) -> str | None:
+    if not GEMINI_API_KEY:
+        print("[Gemini] :: API key missing. Set ENV_API_KEY (or GEMINI_API_KEY/GOOGLE_API_KEY).", flush=True)
+        return None
+
+    if not transcription.strip():
+        return None
+
+    request_payload: dict[str, Any] = {
+        "contents": [
+            {
+                "parts": [
+                    {
+                        "text": f"{MEDICAL_PROMPT_TEMPLATE}{transcription}",
+                    }
+                ]
+            }
+        ],
+        "generationConfig": {
+            "temperature": 0.2,
+            "topP": 0.9,
+            "topK": 20,
+        },
+    }
+
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        response = await client.post(
+            GEMINI_API_URL,
+            headers={
+                "Content-Type": "application/json",
+                "X-goog-api-key": GEMINI_API_KEY,
+            },
+            json=request_payload,
+        )
+
+    if response.status_code != 200:
+        print(f"[Gemini] :: Request failed ({response.status_code}): {response.text}", flush=True)
+        return None
+
+    payload = response.json()
+    model_text = _extract_gemini_text(payload)
+    if not model_text:
+        print("[Gemini] :: Empty model response", flush=True)
+        return None
+
+    return _ensure_complete_report(model_text)
+
+
+def _ensure_complete_report(report_text: str) -> str:
+    cleaned = report_text.strip()
+    normalized = cleaned.upper()
+
+    missing_sections: list[str] = []
+    for section in REPORT_SECTIONS:
+        marker = f"{section}:"
+        if marker not in normalized:
+            missing_sections.append(section)
+
+    if not missing_sections:
+        return cleaned
+
+    # Ensure every section exists to avoid incomplete rendering downstream.
+    completed = cleaned
+    if completed:
+        completed += "\n\n"
+    completed += "\n\n".join([f"{section}:\nNo referido." for section in missing_sections])
+    return completed
 
 
 @app.post("/api/audio")
@@ -136,7 +267,11 @@ async def transcribe_audio(
         "last_chunk_index": metadata.chunk_index,
     }
 
+    medical_report: str | None = None
+    medical_report_status = "not_requested"
     if metadata.is_last:
+        medical_report = await _generate_medical_report(transcription)
+        medical_report_status = "ok" if medical_report else "failed_or_missing_api_key"
         SESSION_STATE.pop(metadata.session_id, None)
 
     return {
@@ -145,4 +280,7 @@ async def transcribe_audio(
         "chunk_index": metadata.chunk_index,
         "is_last": metadata.is_last,
         "text": delta_text,
+        "full_transcript": transcription if metadata.is_last else "",
+        "medical_report_status": medical_report_status,
+        "medical_report": medical_report,
     }

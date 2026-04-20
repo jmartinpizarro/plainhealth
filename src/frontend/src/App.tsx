@@ -10,13 +10,12 @@ function App() {
   const [chunks, setChunks] = useState<Blob[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [liveTranscript, setLiveTranscript] = useState('');
+  const [fullTranscript, setFullTranscript] = useState('');
+  const [medicalReport, setMedicalReport] = useState('');
+  const [medicalReportStatus, setMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
   
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const allChunksRef = useRef<Blob[]>([]); // for saving the chunks
-  const sessionIdRef = useRef<string>('');
-  const isStoppingRef = useRef(false);
-  const sendQueueRef = useRef<Promise<void>>(Promise.resolve());
-  const lastHandledChunkRef = useRef(-1);
 
   const startRecording = async () => {
     try {
@@ -33,41 +32,33 @@ function App() {
       allChunksRef.current = [];
       setChunks([]);
       setLiveTranscript('');
-      lastHandledChunkRef.current = -1;
+      setFullTranscript('');
+      setMedicalReport('');
+      setMedicalReportStatus('idle');
 
       // a random sessionId per audio sent - this might not make any sense at the moment but 
       // because is a PoC and there are not any users, fuck it, we ball
       const currentSessionId = self.crypto.randomUUID();
-      sessionIdRef.current = currentSessionId;
       setSessionId(currentSessionId);
-      
-      let chunk_counter = 0;
+
       mediaRecorder.ondataavailable = (event) => {
         if (event.data && event.data.size > 0) {
           allChunksRef.current.push(event.data);
-          setChunks(prev => [...prev, event.data]);
-
-          // Send a self-contained chunk for each request.
-          // Timesliced blobs are not always independently decodable in isolation.
-          const cumulativeBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
-          const isLastChunk = isStoppingRef.current;
-          const currentChunkIndex = chunk_counter;
-          sendQueueRef.current = sendQueueRef.current.then(() =>
-            processChunk(cumulativeBlob, currentChunkIndex, isLastChunk, currentSessionId)
-          );
-          chunk_counter++;
+          setChunks((prev: Blob[]) => [...prev, event.data]);
         }
       };
 
-      mediaRecorder.onstop = () => {
+      mediaRecorder.onstop = async () => {
         // TODO: do i really want this?
         const fullBlob = new Blob(allChunksRef.current, { type: 'audio/webm' });
         const url = URL.createObjectURL(fullBlob);
         setRecordedAudioUrl(url);
+
+        // Send only once when recording stops.
+        await processChunk(fullBlob, 0, true, currentSessionId);
         
         // stop using the microphone
         stream.getTracks().forEach(track => track.stop());
-        isStoppingRef.current = false;
       };
 
       // set up the chunk size
@@ -81,7 +72,6 @@ function App() {
 
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
-      isStoppingRef.current = true;
       // Flush pending data before stopping.
       mediaRecorderRef.current.requestData();
       mediaRecorderRef.current.stop();
@@ -95,6 +85,10 @@ function App() {
     isLast: boolean,
     currentSessionId: string,
   ) => {
+    if (isLast) {
+      setMedicalReportStatus('processing');
+    }
+
     const formData = new FormData();
 
     formData.append('session_id', currentSessionId); // session_id
@@ -111,15 +105,27 @@ function App() {
       const result = await response.json();
       console.log(result)
 
-      if (result.chunk_index > lastHandledChunkRef.current) {
-        lastHandledChunkRef.current = result.chunk_index;
-        const chunkText = (result.text || '').trim();
-        if (chunkText) {
-          const entry = `[chunk ${result.chunk_index}] ${chunkText}`;
-          setLiveTranscript((prev) => (prev ? `${prev}\n${entry}` : entry));
+      const chunkText = (result.text || '').trim();
+      if (chunkText) {
+        const entry = `[chunk ${result.chunk_index}] ${chunkText}`;
+        setLiveTranscript((prev: string) => (prev ? `${prev}\n${entry}` : entry));
+      }
+
+      if (result.is_last) {
+        setFullTranscript((result.full_transcript || '').trim());
+        if (result.medical_report) {
+          setMedicalReport(String(result.medical_report).trim());
+          setMedicalReportStatus('ready');
+        } else {
+          setMedicalReport('No se pudo generar informe medico. Revisa la API key (GOOGLE_API_KEY/ENV_API_KEY/GEMINI_API_KEY) y el log del backend.');
+          setMedicalReportStatus('error');
         }
       }
     } catch (error) {
+      if (isLast) {
+        setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
+        setMedicalReportStatus('error');
+      }
       console.log(error)
     }
   };
@@ -156,7 +162,6 @@ function App() {
           style={{
             marginTop: '1rem',
             width: 'min(90vw, 760px)',
-            minHeight: '120px',
             border: '1px solid #ddd',
             borderRadius: '12px',
             padding: '0.75rem 1rem',
@@ -164,13 +169,40 @@ function App() {
             textAlign: 'left',
           }}
         >
-          <strong>Transcripción en vivo</strong>
+          <strong>Transcripcion final</strong>
           <p style={{ marginTop: '0.5rem', lineHeight: 1.4, whiteSpace: 'pre-wrap' }}>
-            {liveTranscript || 'Aquí aparecerá el texto reconocido...'}
+            {fullTranscript || 'Aun no disponible. Aparecera al parar la grabacion.'}
           </p>
-          <small>Sesión: {sessionId || '-'}</small>
-          <br />
-          <small>Chunks enviados: {chunks.length}</small>
+        </div>
+
+        <div
+          style={{
+            marginTop: '1rem',
+            width: 'min(90vw, 760px)',
+            border: '1px solid #ddd',
+            borderRadius: '12px',
+            padding: '0.75rem 1rem',
+            background: '#fff',
+            textAlign: 'left',
+          }}
+        >
+          <strong>Informe medico estructurado (Gemini)</strong>
+          <p style={{ marginTop: '0.5rem' }}>
+            Estado: {medicalReportStatus}
+          </p>
+          <pre
+            style={{
+              marginTop: '0.5rem',
+              lineHeight: 1.35,
+              whiteSpace: 'pre-wrap',
+              overflowX: 'auto',
+              background: '#f8f8f8',
+              borderRadius: '8px',
+              padding: '0.75rem',
+            }}
+          >
+            {medicalReport || 'Aun no disponible. Se generara automaticamente al cerrar la grabacion.'}
+          </pre>
         </div>
 
         {recordedAudioUrl && (
