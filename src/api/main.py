@@ -19,6 +19,7 @@ from models.AudioRequest import AudioRequestModel
 # set up env environment variables for faster model downloads
 load_dotenv()
 HF_TOKEN = os.getenv('HF_TOKEN')
+PRODUCTION = os.getenv("PRODUCTION")
 
 if HF_TOKEN:
     login(token=HF_TOKEN)
@@ -40,7 +41,7 @@ app.add_middleware(
 )
 
 # load the whisper model with its configs
-MODEL_SIZE: str = 'medium'
+MODEL_SIZE: str = 'medium' if PRODUCTION is True else 'tiny' 
 PRECISION: str = 'float16' # precision
 RT_BATCH_DURATION: int = 1 # seconds
 # because the WhisperInference class allows the inference using files. And guess what it is sent
@@ -97,6 +98,10 @@ async def transcribe_audio(
     audio_temp = bytearray()
     audio_temp.extend(audio_bytes)
 
+    # The API has two main parts, the audio transcription and the LLM inference for generating
+    # a medical resume.
+
+    # Part one - transcription
     try:
         segments, info = model.inference(audio_temp, beam_size=1)
     except AVEOFError:
@@ -138,6 +143,7 @@ async def transcribe_audio(
         "last_chunk_index": metadata.chunk_index,
     }
 
+    # Part 2 -LLM infer (currently Gemini)
     medical_report: str | None = None
     medical_report_status = "not_requested"
     if metadata.is_last:
