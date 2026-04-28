@@ -16,6 +16,15 @@ function AudioTranscriptor() {
     const [medicalReport, setMedicalReport] = useState('');
     const [medicalReportStatus, setMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
 
+    /**
+     * Internally, it was kind of complicated of sending each chunk to the API, decode it and 
+     * process it (because of headers). So what it is done here is to process all the chunks 
+     * recorded in 1000ms intervals. The last chunk (isLast), is the one which is sent to the 
+     * backend in order to be processed. 
+     * TODO: this can be optimised by recording the entire audio as an unique chunk, 
+     * not as fragments
+     */
+
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const allChunksRef = useRef<Blob[]>([]); // for saving the chunks
 
@@ -94,24 +103,49 @@ function AudioTranscriptor() {
             formData.append('is_last', isLast ? 'true' : 'false'); // is_last
             formData.append('audio', chunk, 'chunk.webm'); // audio
 
+            // fetch transcription
             try {
-                const response = await fetch(API_URL + '/audio', { method: 'POST', body: formData });
+                const response = await fetch(API_URL + '/transcribe_audio', { method: 'POST', body: formData });
                 if (!response.ok) {
                     const details = await response.text();
                     throw new Error(`Response status: ${response.status} - ${details}`);
                 }
                 const result = await response.json();
-                console.log(result)
 
-                if (result.is_last) {
+                if (result.is_last) { // asume always true
                     setFullTranscript((result.full_transcript || '').trim());
-                    if (result.medical_report) {
-                        setMedicalReport(String(result.medical_report).trim());
-                        setMedicalReportStatus('ready');
-                    } else {
-                        setMedicalReport('No se pudo generar informe medico. Revisa la API key (GOOGLE_API_KEY/ENV_API_KEY/GEMINI_API_KEY) y el log del backend.');
-                        setMedicalReportStatus('error');
+                    const transcriptResult = result.full_transcript;
+
+                    // fetch resume by llm
+                    try {
+                        const resumeFormData = new FormData();
+                        resumeFormData.append('transcription', transcriptResult);
+                        const response = await fetch(API_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+
+                        if (!response.ok) {
+                            const details = await response.text();
+                            throw new Error(`Response status: ${response.status} - ${details}`);
+                        }
+
+                        const result = await response.json();
+
+                        if (result.medical_report) {
+                            setMedicalReport(String(result.medical_report).trim());
+                            setMedicalReportStatus('ready');
+                        } else {
+                            setMedicalReport('No se pudo generar informe medico. Revisa la API key (GOOGLE_API_KEY/ENV_API_KEY/GEMINI_API_KEY) y el log del backend.');
+                            setMedicalReportStatus('error');
+                        }
+
+                    } catch (error) {
+                        if (isLast) {
+                            setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
+                            setMedicalReportStatus('error');
+                        }
                     }
+
+
+
                 }
             } catch (error) {
                 if (isLast) {

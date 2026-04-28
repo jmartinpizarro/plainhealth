@@ -61,7 +61,7 @@ except Exception as e:
 
 
 
-@app.post("/api/audio")
+@app.post("/api/transcribe_audio")
 async def transcribe_audio(
     session_id: str = Form(...),
     chunk_index: int = Form(...),
@@ -98,10 +98,7 @@ async def transcribe_audio(
     audio_temp = bytearray()
     audio_temp.extend(audio_bytes)
 
-    # The API has two main parts, the audio transcription and the LLM inference for generating
-    # a medical resume.
-
-    # Part one - transcription
+    # transcription
     try:
         segments, info = model.inference(audio_temp, beam_size=1)
     except AVEOFError:
@@ -143,14 +140,6 @@ async def transcribe_audio(
         "last_chunk_index": metadata.chunk_index,
     }
 
-    # Part 2 -LLM infer (currently Gemini)
-    medical_report: str | None = None
-    medical_report_status = "not_requested"
-    if metadata.is_last:
-        medical_report = await _generate_medical_report(transcription)
-        medical_report_status = "ok" if medical_report else "failed_or_missing_api_key"
-        SESSION_STATE.pop(metadata.session_id, None)
-
     return {
         "message": "Chunk received",
         "session_id": metadata.session_id,
@@ -158,6 +147,17 @@ async def transcribe_audio(
         "is_last": metadata.is_last,
         "text": delta_text,
         "full_transcript": transcription if metadata.is_last else "",
+    }
+
+@app.post("/api/generate_resume")
+async def generate_resume(transcription: str = Form(...)):
+    # llm inference for resume generation
+    medical_report: str | None = None
+    medical_report = await _generate_medical_report(transcription)
+    medical_report_status = "ok" if medical_report else "failed_or_missing_api_key"
+
+    return {
+        "message": "Resume has been correctly generated",
         "medical_report_status": medical_report_status,
         "medical_report": medical_report,
     }
