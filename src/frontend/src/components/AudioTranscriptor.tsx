@@ -8,6 +8,7 @@ import { useState, useRef } from "react"
 import MedicalResumeFactory from "./MedicalResumeFactory";
 
 const API_URL = "http://localhost:5000/api"
+const IP_URL = "http://10.117.129.37:8000/api"
 
 function AudioTranscriptor() {
     const [recordedAudioUrl, setRecordedAudioUrl] = useState<string | null>(null);
@@ -120,7 +121,7 @@ function AudioTranscriptor() {
                     try {
                         const resumeFormData = new FormData();
                         resumeFormData.append('transcription', transcriptResult);
-                        const response = await fetch(API_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+                        const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
 
                         if (!response.ok) {
                             const details = await response.text();
