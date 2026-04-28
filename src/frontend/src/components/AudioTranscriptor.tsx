@@ -88,6 +88,64 @@ function AudioTranscriptor() {
         }
     };
 
+    const fetchTranscrition = async (formData: FormData, isLast: boolean) => {
+        // fetch transcription
+        try {
+            const response = await fetch(API_URL + '/transcribe_audio', { method: 'POST', body: formData });
+            if (!response.ok) {
+                const details = await response.text();
+                throw new Error(`Response status: ${response.status} - ${details}`);
+            }
+            const result = await response.json();
+
+            if (result.is_last) { // asume always true
+                const transcript = String(result.full_transcript || '').trim();
+                setFullTranscript(transcript);
+                return transcript;
+            }
+
+            return String(result.text || '').trim();
+        } catch (error) {
+            if (isLast) {
+                setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
+                setMedicalReportStatus('error');
+            }
+            console.log(error)
+            return '';
+        }
+    }
+
+    const fetchMedicalResume = async (transcriptResult: string, isLast: boolean) => {
+        // fetch resume by llm
+        try {
+            const resumeFormData = new FormData();
+            resumeFormData.append('transcription', transcriptResult);
+            const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+
+            if (!response.ok) {
+                const details = await response.text();
+                throw new Error(`Response status: ${response.status} - ${details}`);
+            }
+
+            const result = await response.json();
+
+            if (result.medical_report) {
+                setMedicalReport(String(result.medical_report).trim());
+                setMedicalReportStatus('ready');
+            } else {
+                setMedicalReport('No se pudo generar informe medico. Revisa la API key (GOOGLE_API_KEY/ENV_API_KEY/GEMINI_API_KEY) y el log del backend.');
+                setMedicalReportStatus('error');
+            }
+
+        } catch (error) {
+            if (isLast) {
+                setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
+                setMedicalReportStatus('error');
+            }
+        }
+
+    }
+
     const processChunk = async (
         chunk: Blob,
         chunkCounter: number,
@@ -104,57 +162,11 @@ function AudioTranscriptor() {
             formData.append('is_last', isLast ? 'true' : 'false'); // is_last
             formData.append('audio', chunk, 'chunk.webm'); // audio
 
-            // fetch transcription
-            try {
-                const response = await fetch(API_URL + '/transcribe_audio', { method: 'POST', body: formData });
-                if (!response.ok) {
-                    const details = await response.text();
-                    throw new Error(`Response status: ${response.status} - ${details}`);
-                }
-                const result = await response.json();
-
-                if (result.is_last) { // asume always true
-                    setFullTranscript((result.full_transcript || '').trim());
-                    const transcriptResult = result.full_transcript;
-
-                    // fetch resume by llm
-                    try {
-                        const resumeFormData = new FormData();
-                        resumeFormData.append('transcription', transcriptResult);
-                        const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
-
-                        if (!response.ok) {
-                            const details = await response.text();
-                            throw new Error(`Response status: ${response.status} - ${details}`);
-                        }
-
-                        const result = await response.json();
-
-                        if (result.medical_report) {
-                            setMedicalReport(String(result.medical_report).trim());
-                            setMedicalReportStatus('ready');
-                        } else {
-                            setMedicalReport('No se pudo generar informe medico. Revisa la API key (GOOGLE_API_KEY/ENV_API_KEY/GEMINI_API_KEY) y el log del backend.');
-                            setMedicalReportStatus('error');
-                        }
-
-                    } catch (error) {
-                        if (isLast) {
-                            setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
-                            setMedicalReportStatus('error');
-                        }
-                    }
-
-
-
-                }
-            } catch (error) {
-                if (isLast) {
-                    setMedicalReport('Error al solicitar la transcripcion/informe. Revisa la consola del navegador y del backend.');
-                    setMedicalReportStatus('error');
-                }
-                console.log(error)
+            const transcript = await fetchTranscrition(formData, isLast);
+            if (transcript) {
+                await fetchMedicalResume(transcript, isLast);
             }
+
         }
     };
 
@@ -201,10 +213,6 @@ function AudioTranscriptor() {
 
             <MedicalResumeFactory report={medicalReport} reportStatus={medicalReportStatus} />
         </>
-
-
-
-
     )
 }
 
