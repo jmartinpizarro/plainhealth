@@ -6,16 +6,23 @@
 import { useState, useRef } from "react"
 
 import MedicalResumeFactory from "./MedicalResumeFactory";
+import ResumeSimplificatorFactory from "./ResumeSimplificatorFactory";
 
 const API_URL = "http://localhost:5000/api"
 const IP_URL = "http://10.117.129.37:8000/api"
 
 function AudioTranscriptor() {
+    // audio transcription
     const [recordedAudioUrl, setRecordedAudioUrl] = useState<string | null>(null);
     const [isRecording, setIsRecording] = useState(false);
     const [fullTranscript, setFullTranscript] = useState('');
+    // medical report
     const [medicalReport, setMedicalReport] = useState('');
     const [medicalReportStatus, setMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
+    // simplified medical report
+    const [simplifiedMedicalReport, setSimplifiedMedicalReport] = useState('');
+    const [simplifiedMedicalReportStatus, setSimplifiedMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
+
 
     /**
      * Internally, it was kind of complicated of sending each chunk to the API, decode it and 
@@ -88,7 +95,7 @@ function AudioTranscriptor() {
         }
     };
 
-    const fetchTranscrition = async (formData: FormData, isLast: boolean) => {
+    const fetchTranscription = async (formData: FormData, isLast: boolean) => {
         // fetch transcription
         try {
             const response = await fetch(API_URL + '/transcribe_audio', { method: 'POST', body: formData });
@@ -120,6 +127,7 @@ function AudioTranscriptor() {
         try {
             const resumeFormData = new FormData();
             resumeFormData.append('transcription', transcriptResult);
+            resumeFormData.append('flag', '0'); // for normal medical resume
             const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
 
             if (!response.ok) {
@@ -143,7 +151,36 @@ function AudioTranscriptor() {
                 setMedicalReportStatus('error');
             }
         }
+    }
 
+    const fetchSimplifiedMedicalResume = async (transcriptResult: string, isLast: boolean) => {
+        try {
+            const resumeFormData = new FormData();
+            resumeFormData.append('transcription', transcriptResult);
+            resumeFormData.append('flag', '1'); // for simplified medical resume
+            const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+
+            if (!response.ok) {
+                const details = await response.text();
+                throw new Error(`Response status: ${response.status} - ${details}`);
+            }
+
+            const result = await response.json();
+
+            if (result.medical_report_status == 'ok') {
+                setSimplifiedMedicalReport(String(result.medical_report).trim());
+                setSimplifiedMedicalReportStatus('ready');
+            } else {
+                setSimplifiedMedicalReport('No se pudo generar informe medico simplificado.');
+                setSimplifiedMedicalReportStatus('error');
+            }
+
+        } catch (error) {
+            if (isLast) {
+                setSimplifiedMedicalReport('Error al solicitar la transcripcion/informe simplificado. Revisa la consola del navegador y del backend.');
+                setSimplifiedMedicalReportStatus('error');
+            }
+        }
     }
 
     const processChunk = async (
@@ -162,9 +199,10 @@ function AudioTranscriptor() {
             formData.append('is_last', isLast ? 'true' : 'false'); // is_last
             formData.append('audio', chunk, 'chunk.webm'); // audio
 
-            const transcript = await fetchTranscrition(formData, isLast);
+            const transcript = await fetchTranscription(formData, isLast);
             if (transcript) {
                 await fetchMedicalResume(transcript, isLast);
+                await fetchSimplifiedMedicalResume(transcript, isLast);
             }
 
         }
@@ -212,6 +250,8 @@ function AudioTranscriptor() {
             </section>
 
             <MedicalResumeFactory report={medicalReport} reportStatus={medicalReportStatus} />
+
+            <ResumeSimplificatorFactory report={simplifiedMedicalReport} reportStatus={simplifiedMedicalReportStatus} />
         </>
     )
 }

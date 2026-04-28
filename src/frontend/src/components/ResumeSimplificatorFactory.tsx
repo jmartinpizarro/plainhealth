@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-type MedicalResumeFactoryProps = {
+type ResumeSimplificatorFactoryProps = {
     report: string;
     reportStatus: 'idle' | 'processing' | 'ready' | 'error';
 };
 
-function MedicalResumeFactory({report, reportStatus} : MedicalResumeFactoryProps) {
+function ResumeSimplificatorFactory({ report, reportStatus }: ResumeSimplificatorFactoryProps) {
 
-    const [medicalReport, setMedicalReport] = useState('');
-    const [medicalReportStatus, setMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
+    const [simplifiedMedicalReport, setSimplifiedMedicalReport] = useState('');
+    const [simplifiedMedicalReportStatus, setSimplifiedMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
 
     useEffect(() => {
-        setMedicalReport(report),
-        setMedicalReportStatus(reportStatus)
+        setSimplifiedMedicalReport(report),
+            setSimplifiedMedicalReportStatus(reportStatus)
     }, [report, reportStatus])
 
     return (
@@ -27,9 +27,9 @@ function MedicalResumeFactory({report, reportStatus} : MedicalResumeFactoryProps
                 textAlign: 'left',
             }}
         >
-            <strong>Informe médico</strong>
+            <strong>Informe Simplificado</strong>
             <p style={{ marginTop: '0.5rem' }}>
-                Estado: {medicalReportStatus}
+                Estado: {simplifiedMedicalReportStatus}
             </p>
             <pre
                 style={{
@@ -42,10 +42,10 @@ function MedicalResumeFactory({report, reportStatus} : MedicalResumeFactoryProps
                     padding: '0.75rem',
                 }}
             >
-                {medicalReport || 'Aun no disponible. Se generara automaticamente al cerrar la grabacion.'}
+                {simplifiedMedicalReport || 'Aun no disponible. Se generara automaticamente al cerrar la grabacion.'}
             </pre>
         </div>
     )
 }
 
-export default MedicalResumeFactory
+export default ResumeSimplificatorFactory
