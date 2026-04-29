@@ -212,17 +212,26 @@ function AudioTranscriptor() {
     return (
         <>
             <section>
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                    <button onClick={startRecording} disabled={isRecording}>
+                <div className="flex flex-row justify-center gap-4 mt-4">
+                    <button
+                        onClick={startRecording}
+                        disabled={isRecording}
+                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer 
+                        transition duration-150 ease-in-out hover:bg-green-500"
+                        >
                         Grabar
                     </button>
-                    <button onClick={stopRecording} disabled={!isRecording}>
+                    <button onClick={stopRecording}
+                        disabled={!isRecording}
+                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer 
+                        transition duration-150 ease-in-out hover:bg-red-500"
+                        >
                         Parar
                     </button>
                 </div>
 
                 {isRecording && (
-                    <p style={{ color: 'red' }}>
+                    <p className="text-red">
                         Grabando...
                     </p>
                 )}
@@ -231,17 +240,7 @@ function AudioTranscriptor() {
                     <audio controls src={recordedAudioUrl} style={{ marginTop: '1rem' }} />
                 )}
 
-                <div
-                    style={{
-                        marginTop: '1rem',
-                        width: 'min(90vw, 760px)',
-                        border: '1px solid #ddd',
-                        borderRadius: '12px',
-                        padding: '0.75rem 1rem',
-                        background: '#fff',
-                        textAlign: 'left',
-                    }}
-                >
+                <div className="mt-4 w-[min(90vw,760px)] border-2 border-solid border-gray-100 px-3 py-4 bg-white text-left">
                     <strong>Transcripcion final</strong>
                     <p style={{ marginTop: '0.5rem', lineHeight: 1.4, whiteSpace: 'pre-wrap' }}>
                         {fullTranscript || 'Aun no disponible. Aparecera al parar la grabacion.'}

@@ -16,31 +16,12 @@ function MedicalResumeFactory({report, reportStatus} : MedicalResumeFactoryProps
     }, [report, reportStatus])
 
     return (
-        <div
-            style={{
-                marginTop: '1rem',
-                width: 'min(90vw, 760px)',
-                border: '1px solid #ddd',
-                borderRadius: '12px',
-                padding: '0.75rem 1rem',
-                background: '#fff',
-                textAlign: 'left',
-            }}
-        >
+        <div className="mt-4 w-[min(90vw,760px)] border-2 border-solid rounded-lg border-gray-100 px-3 py-4 bg-white text-left">
             <strong>Informe médico</strong>
-            <p style={{ marginTop: '0.5rem' }}>
+            <p className="mt-2">
                 Estado: {medicalReportStatus}
             </p>
-            <pre
-                style={{
-                    marginTop: '0.5rem',
-                    lineHeight: 1.35,
-                    whiteSpace: 'pre-wrap',
-                    overflowX: 'auto',
-                    background: '#f8f8f8',
-                    borderRadius: '8px',
-                    padding: '0.75rem',
-                }}
+            <pre className="mt-2 text-base/7 whitespace-pre-wrap bg-[#f8f8f8] overflow-x-auto p-3 rounded-lg"
             >
                 {medicalReport || 'Aun no disponible. Se generara automaticamente al cerrar la grabacion.'}
             </pre>
