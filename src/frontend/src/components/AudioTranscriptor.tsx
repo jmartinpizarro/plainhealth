@@ -3,7 +3,7 @@
  * the medic and the patient for then being sent to the backend
  */
 
-import { useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 
 import MedicalResumeFactory from "./MedicalResumeFactory";
 import ResumeSimplificatorFactory from "./ResumeSimplificatorFactory";
@@ -22,6 +22,12 @@ function AudioTranscriptor() {
     // simplified medical report
     const [simplifiedMedicalReport, setSimplifiedMedicalReport] = useState('');
     const [simplifiedMedicalReportStatus, setSimplifiedMedicalReportStatus] = useState<'idle' | 'processing' | 'ready' | 'error'>('idle');
+    // for the form data
+    const [typeDocument, setTypeDocument] = useState<string>('Estándar');
+
+    useEffect(() => {
+        console.log(typeDocument);
+    }, [typeDocument]);
 
 
     /**
@@ -128,6 +134,7 @@ function AudioTranscriptor() {
             const resumeFormData = new FormData();
             resumeFormData.append('transcription', transcriptResult);
             resumeFormData.append('flag', '0'); // for normal medical resume
+            resumeFormData.append('typeDocument', typeDocument);
             const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
 
             if (!response.ok) {
@@ -158,6 +165,7 @@ function AudioTranscriptor() {
             const resumeFormData = new FormData();
             resumeFormData.append('transcription', transcriptResult);
             resumeFormData.append('flag', '1'); // for simplified medical resume
+            resumeFormData.append('typeDocument', typeDocument);
             const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
 
             if (!response.ok) {
@@ -211,27 +219,57 @@ function AudioTranscriptor() {
 
     return (
         <>
-            <section>
-                <div className="flex flex-row justify-center gap-4 mt-4">
+            <section className="flex flex-row justify-between items-center">
+                <form className="text-left max-w-2xs mx-4" action="">
+                    <p>Selecciona el tipo de documento médico que quieres generar.</p>
+                    <br />
+                    <input
+                        type="radio"
+                        id="standard"
+                        name="t_document"
+                        value="Estándar"
+                        checked={typeDocument === 'Estándar'}
+                        onChange={(e) => {setTypeDocument(e.currentTarget.value)}}
+                    />
+                    <label htmlFor="standard"> Estándar</label><br />
+                    <input
+                        type="radio"
+                        id="short"
+                        name="t_document"
+                        value="Breve"
+                        checked={typeDocument === 'Breve'}
+                        onChange={(e) => {setTypeDocument(e.currentTarget.value)}}
+                    />
+                    <label htmlFor="short"> Breve</label><br />
+                    <input
+                        type="radio"
+                        id="detailed"
+                        name="t_document"
+                        value="Detallada"
+                        checked={typeDocument === 'Detallada'}
+                        onChange={(e) => {setTypeDocument(e.currentTarget.value)}}
+                    />
+                    <label htmlFor="detailed"> Detallada</label><br /><br />
+                </form>
+
+                <div className="flex flex-row items-center gap-4 mt-4">
                     <button
                         onClick={startRecording}
                         disabled={isRecording}
-                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer 
-                        transition duration-150 ease-in-out hover:bg-green-500"
-                        >
+                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer transition duration-150 ease-in-out hover:bg-green-500"
+                    >
                         Grabar
                     </button>
                     <button onClick={stopRecording}
                         disabled={!isRecording}
-                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer 
-                        transition duration-150 ease-in-out hover:bg-red-500"
-                        >
+                        className="px-4 py-2 rounded-sm bg-gray-400 text-white cursor-pointer transition duration-150 ease-in-out hover:bg-red-500"
+                    >
                         Parar
                     </button>
                 </div>
 
                 {isRecording && (
-                    <p className="text-red">
+                    <p style={{ color: 'red' }}>
                         Grabando...
                     </p>
                 )}
@@ -239,14 +277,14 @@ function AudioTranscriptor() {
                 {recordedAudioUrl && (
                     <audio controls src={recordedAudioUrl} style={{ marginTop: '1rem' }} />
                 )}
-
-                <div className="mt-4 w-[min(90vw,760px)] border-2 border-solid border-gray-100 px-3 py-4 bg-white text-left">
-                    <strong>Transcripcion final</strong>
-                    <p style={{ marginTop: '0.5rem', lineHeight: 1.4, whiteSpace: 'pre-wrap' }}>
-                        {fullTranscript || 'Aun no disponible. Aparecera al parar la grabacion.'}
-                    </p>
-                </div>
             </section>
+
+            <div className="mt-4 w-[min(90vw,760px)] border-2 border-solid border-gray-100 px-3 py-4 bg-white text-left">
+                <strong>Transcripcion final</strong>
+                <p style={{ marginTop: '0.5rem', lineHeight: 1.4, whiteSpace: 'pre-wrap' }}>
+                    {fullTranscript || 'Aun no disponible. Aparecera al parar la grabacion.'}
+                </p>
+            </div>
 
             <MedicalResumeFactory report={medicalReport} reportStatus={medicalReportStatus} />
 
