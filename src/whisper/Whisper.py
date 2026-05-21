@@ -2,9 +2,10 @@
 This script contains the class definition for the Whisper model inference
 """
 
-import io
 from time import perf_counter
 from typing import Iterator, TextIO
+
+import numpy as np
 import ctranslate2
 from faster_whisper import WhisperModel
 
@@ -15,7 +16,7 @@ class WhisperInference():
         self.precision: str = precision
         self.batch_duration: int = batch_duration
         self.rt_mode = True if rt else False # either is RT inference or I/O-based inference
-        self.model = None
+        self.model: None | WhisperModel = None
         self.device = "cpu"
 
 
@@ -52,6 +53,7 @@ class WhisperInference():
         """
 
         if self.rt_mode:
+
             if not isinstance(audio, (bytearray)):
                 raise TypeError("""[WhisperInference] :: For RT inference, the <audio> parameter 
                                 must be a bytearray""")
@@ -60,6 +62,9 @@ class WhisperInference():
             audio_int16 = np.frombuffer(bytes(audio), dtype=np.int16)
             audio_float32 = audio_int16.astype(np.float32) / 32768.0
 
+            if not isinstance(self.model, WhisperModel):
+                raise TypeError("""[WhisperInference] :: For I/O inference, the <model> parameter 
+                                cannot be None""")
             segments, info = self.model.transcribe(audio_float32, beam_size=beam_size, language="es", 
                                                    vad_filter=True, no_repeat_ngram_size=2)
 
@@ -67,13 +72,16 @@ class WhisperInference():
             if not isinstance(audio, (str)):
                 raise TypeError("""[WhisperInference] :: For I/O inference, the <audio> parameter 
                                 must be a string""")
+            if not isinstance(self.model, WhisperModel):
+                raise TypeError("""[WhisperInference] :: For I/O inference, the <model> parameter 
+                                cannot be None""")
             segments, info = self.model.transcribe(audio, beam_size=beam_size, language="es", 
                                                    vad_filter=False, no_repeat_ngram_size=2)
 
         return segments, info
     
 
-    def write_logs(self, segments: Iterator, segment_index: int, f: TextIO | None=None) -> str:
+    def write_logs(self, segments: Iterator, segment_index: int, f: TextIO | None=None) -> None:
         """
         Write the logs of the inference in a .txt file
 
@@ -104,7 +112,6 @@ class WhisperInference():
                     segment.text,
                 )
             )
-        )
         print(f"{segment.text} ", flush=True)
 
 
