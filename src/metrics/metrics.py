@@ -88,12 +88,12 @@ def main():
         audios_route = os.path.normpath(os.path.join(rel_route, audios_route))
         texts_route = os.path.normpath(os.path.join(rel_route, texts_route))
 
-        transcripts_output_dir = os.path.normpath(
-            os.path.join("output", "metrics_transcripts", MODEL_SIZE)
-        )
-        os.makedirs(transcripts_output_dir, exist_ok=True)
-        
         for m in models:
+
+            transcripts_output_dir = os.path.normpath(
+                os.path.join("output", "metrics_transcripts", m)
+            )
+            os.makedirs(transcripts_output_dir, exist_ok=True)
 
             # load model only once for the full dataset
             rt_batch_duration = 1  # not used for file-based inference
@@ -115,6 +115,7 @@ def main():
             total_ref_words = 0
             total_char_errors = 0
             total_ref_chars = 0
+            average_sari = []
 
             # for every audio in the list, look up the text file and run inference
             for audio in audios:
@@ -162,6 +163,9 @@ def main():
 
                 wer = model.compute_wer(transcript=transcript, reference_text=reference_text)
                 cer = model.compute_cer(transcript=transcript, reference_text=reference_text)
+                sari = model.compute_sari([transcript], [reference_text])
+                average_sari.append(sari["sari"])
+
                 word_errors, ref_words = model.compute_wer_counts(
                     transcript=transcript,
                     reference_text=reference_text,
@@ -176,33 +180,37 @@ def main():
                 total_char_errors += char_errors
                 total_ref_chars += ref_chars
 
-                logging.info(
-                    "[metrics] :: %s -> WER: %.4f (%d/%d), CER: %.4f (%d/%d)",
-                    audio,
-                    wer,
-                    word_errors,
-                    ref_words,
-                    cer,
-                    char_errors,
-                    ref_chars,
-                )
+                # logging.info(
+                #     "[metrics] :: %s -> WER: %.4f (%d/%d), CER: %.4f (%d/%d)",
+                #     audio,
+                #     wer,
+                #     word_errors,
+                #     ref_words,
+                #     cer,
+                #     char_errors,
+                #     ref_chars,
+                # )
 
             logging.info("[metrics] :: Total files processed with inference: %d", processed)
             if total_ref_words > 0 and total_ref_chars > 0:
                 corpus_wer = total_word_errors / total_ref_words
                 corpus_cer = total_char_errors / total_ref_chars
                 logging.info(
-                    "[metrics] :: Global WER: %.4f (%d/%d)",
+                    "[metrics] :: Global WER: %.4f (%d/%d)\n",
                     corpus_wer,
                     total_word_errors,
                     total_ref_words,
                 )
                 logging.info(
-                    "[metrics] :: Global CER: %.4f (%d/%d)",
+                    "[metrics] :: Global CER: %.4f (%d/%d)\n",
                     corpus_cer,
                     total_char_errors,
                     total_ref_chars,
                 )
+                logging.info(
+                    "[metrics] :: Average SARI: %.2f\n",
+                    sum(average_sari) / len(average_sari)
+                ) 
             else:
                 logging.warning("[metrics] :: Not enough reference content to compute global WER/CER")
     except Exception:

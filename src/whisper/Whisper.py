@@ -3,10 +3,12 @@ This script contains the class definition for the Whisper model inference
 """
 
 from time import perf_counter
-from typing import Iterator, TextIO
+from typing import Iterator, TextIO, Dict, List
 
-import numpy as np
 import ctranslate2
+import numpy as np
+
+from evaluate import load
 from faster_whisper import WhisperModel
 
 
@@ -53,7 +55,6 @@ class WhisperInference():
         """
 
         if self.rt_mode:
-
             if not isinstance(audio, (bytearray)):
                 raise TypeError("""[WhisperInference] :: For RT inference, the <audio> parameter 
                                 must be a bytearray""")
@@ -61,10 +62,11 @@ class WhisperInference():
             # x_norm = x_int16 / 32768.0 (float32 if possible for precission)
             audio_int16 = np.frombuffer(bytes(audio), dtype=np.int16)
             audio_float32 = audio_int16.astype(np.float32) / 32768.0
-
+            
             if not isinstance(self.model, WhisperModel):
-                raise TypeError("""[WhisperInference] :: For I/O inference, the <model> parameter 
-                                cannot be None""")
+                raise TypeError("""[WhisperInference] :: For inference, the <model> parameter 
+                                must be loaded""")
+
             segments, info = self.model.transcribe(audio_float32, beam_size=beam_size, language="es", 
                                                    vad_filter=True, no_repeat_ngram_size=2)
 
@@ -72,9 +74,11 @@ class WhisperInference():
             if not isinstance(audio, (str)):
                 raise TypeError("""[WhisperInference] :: For I/O inference, the <audio> parameter 
                                 must be a string""")
+            
             if not isinstance(self.model, WhisperModel):
-                raise TypeError("""[WhisperInference] :: For I/O inference, the <model> parameter 
-                                cannot be None""")
+                raise TypeError("""[WhisperInference] :: For inference, the <model> parameter 
+                                must be loaded""")
+
             segments, info = self.model.transcribe(audio, beam_size=beam_size, language="es", 
                                                    vad_filter=False, no_repeat_ngram_size=2)
 
@@ -204,3 +208,24 @@ class WhisperInference():
         if ref_count == 0:
             return 0.0
         return errors / ref_count
+
+    def compute_sari(self, predicted_text: List[str], expected_text: List[str], references: List[List[str]] = [[""]]):
+        """"
+        Function for computing the SARI metric. It follows the formula:
+
+        sari = (F1_add + F1_keep + P_del) / 3 
+        
+            - F1_add = is the n-gram F1 score for add operations 
+            - F1_keep = is the n-gram F1 score for keep operations 
+            - P_del = is the n-gram precision score for delete operations 
+
+        n=4
+
+        @returns sari-metric: Dict['sari': VALUE] -> the higher the value, the better the performance
+        """
+        sari = load("sari")
+        sari_score = sari.compute(sources=expected_text, predictions=predicted_text, references=references)
+        if sari_score:
+            return sari_score
+        return {"sari": 0.0}
+
