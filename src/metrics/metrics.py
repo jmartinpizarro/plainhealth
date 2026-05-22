@@ -12,6 +12,14 @@ import argparse
 from pathlib import Path
 
 from src.whisper.Whisper import WhisperInference
+from src.metrics.utils import TranscriptMetrics, compute_all_metrics, metrics_to_csv
+
+BERTSCORE_CFG = {
+    "bertscore_model": "xlm-roberta-large",   # inglés
+    #"bertscore_model": "PlanTL-GOB-ES/roberta-base-biomedical-clinical-es",  # español
+    "bertscore_lang": "es",
+    "bertscore_num_layers": 17,                # 17 para roberta-large, 12 para roberta-base
+}
 
 logger = logging.getLogger(__name__)
 
@@ -90,6 +98,8 @@ def main():
 
         for m in models:
 
+            all_metrics: list[TranscriptMetrics] = []
+
             transcripts_output_dir = os.path.normpath(
                 os.path.join("output", "metrics_transcripts", m)
             )
@@ -111,11 +121,6 @@ def main():
 
             audios = sorted(os.listdir(audios_route))
             processed = 0
-            total_word_errors = 0
-            total_ref_words = 0
-            total_char_errors = 0
-            total_ref_chars = 0
-            average_sari = []
 
             # for every audio in the list, look up the text file and run inference
             for audio in audios:
@@ -161,58 +166,20 @@ def main():
                 with open(text_file, 'r', encoding='utf-8') as f:
                     reference_text = f.read()
 
-                wer = model.compute_wer(transcript=transcript, reference_text=reference_text)
-                cer = model.compute_cer(transcript=transcript, reference_text=reference_text)
-                sari = model.compute_sari([transcript], [reference_text])
-                average_sari.append(sari["sari"])
-
-                word_errors, ref_words = model.compute_wer_counts(
-                    transcript=transcript,
-                    reference_text=reference_text,
+                metrics = compute_all_metrics(
+                    audio_stem=audio_stem,
+                    prediction=transcript,
+                    reference=reference_text,
+                    source=reference_text,
+                    model_size=m,
+                    **BERTSCORE_CFG,
                 )
-                char_errors, ref_chars = model.compute_cer_counts(
-                    transcript=transcript,
-                    reference_text=reference_text,
-                )
+                all_metrics.append(metrics)
 
-                total_word_errors += word_errors
-                total_ref_words += ref_words
-                total_char_errors += char_errors
-                total_ref_chars += ref_chars
+            csv_path = os.path.join("output", "metrics_transcripts", m, f"metrics_{m}.csv")
+            metrics_to_csv(all_metrics, csv_path)
+            logging.info("[metrics] :: CSV guardado en %s", csv_path)
 
-                # logging.info(
-                #     "[metrics] :: %s -> WER: %.4f (%d/%d), CER: %.4f (%d/%d)",
-                #     audio,
-                #     wer,
-                #     word_errors,
-                #     ref_words,
-                #     cer,
-                #     char_errors,
-                #     ref_chars,
-                # )
-
-            logging.info("[metrics] :: Total files processed with inference: %d", processed)
-            if total_ref_words > 0 and total_ref_chars > 0:
-                corpus_wer = total_word_errors / total_ref_words
-                corpus_cer = total_char_errors / total_ref_chars
-                logging.info(
-                    "[metrics] :: Global WER: %.4f (%d/%d)\n",
-                    corpus_wer,
-                    total_word_errors,
-                    total_ref_words,
-                )
-                logging.info(
-                    "[metrics] :: Global CER: %.4f (%d/%d)\n",
-                    corpus_cer,
-                    total_char_errors,
-                    total_ref_chars,
-                )
-                logging.info(
-                    "[metrics] :: Average SARI: %.2f\n",
-                    sum(average_sari) / len(average_sari)
-                ) 
-            else:
-                logging.warning("[metrics] :: Not enough reference content to compute global WER/CER")
     except Exception:
         logger.exception("[metrics] :: Fatal error while running metrics inference")
         raise SystemExit(1)
