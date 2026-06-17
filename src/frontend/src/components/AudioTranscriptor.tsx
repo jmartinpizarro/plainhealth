@@ -9,7 +9,7 @@ import MedicalResumeFactory from "./MedicalResumeFactory";
 import ResumeSimplificatorFactory from "./ResumeSimplificatorFactory";
 
 const API_URL = "http://localhost:5000/api"
-const IP_URL = "http://10.117.129.37:8000/api"
+const IP_URL = "https://plainhealth-enrouter-23551214743.europe-west1.run.app/gpus"
 
 function AudioTranscriptor() {
     // audio transcription
@@ -132,10 +132,14 @@ function AudioTranscriptor() {
         // fetch resume by llm
         try {
             const resumeFormData = new FormData();
-            resumeFormData.append('transcription', transcriptResult);
-            resumeFormData.append('flag', '0'); // for normal medical resume
+            resumeFormData.append('text', transcriptResult);
+            resumeFormData.append('flag', '0');
             resumeFormData.append('typeDocument', typeDocument);
-            const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+
+            await fetch(IP_URL + '/generate_resume', {
+                method: 'POST',
+                body: resumeFormData
+            });
 
             if (!response.ok) {
                 const details = await response.text();
@@ -162,11 +166,16 @@ function AudioTranscriptor() {
 
     const fetchSimplifiedMedicalResume = async (transcriptResult: string, isLast: boolean) => {
         try {
+
             const resumeFormData = new FormData();
-            resumeFormData.append('transcription', transcriptResult);
-            resumeFormData.append('flag', '1'); // for simplified medical resume
+            resumeFormData.append('text', transcriptResult);
+            resumeFormData.append('flag', '0');
             resumeFormData.append('typeDocument', typeDocument);
-            const response = await fetch(IP_URL + '/generate_resume', { method: 'POST', body: resumeFormData })
+
+            await fetch(IP_URL + '/generate_resume', {
+                method: 'POST',
+                body: resumeFormData
+            });
 
             if (!response.ok) {
                 const details = await response.text();
